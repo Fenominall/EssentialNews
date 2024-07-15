@@ -7,12 +7,6 @@
 
 import Foundation
 
-import Foundation
-
-public struct LocalArticle {
-    
-}
-
 public protocol ArticlesFeedStore {
     typealias DeletionCompletion = ((Error?) -> Void)
     typealias InsertionCompletion = ((Error?) -> Void)
