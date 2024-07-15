@@ -8,7 +8,7 @@
 import Foundation
 
 public struct LocalArticle: Equatable {
-    public let source: Source
+    public let source: LocalSource
     public let author: String?
     public let title: String
     public let description: String?
@@ -18,7 +18,7 @@ public struct LocalArticle: Equatable {
     public let content: String?
     
     public init(
-        source: Source,
+        source: LocalSource,
         author: String?,
         title: String,
         description: String?,
