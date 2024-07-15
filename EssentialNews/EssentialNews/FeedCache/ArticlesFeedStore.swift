@@ -8,9 +8,13 @@
 import Foundation
 
 public protocol ArticlesFeedStore {
-    typealias DeletionCompletion = ((Error?) -> Void)
-    typealias InsertionCompletion = ((Error?) -> Void)
+    typealias DeletionCompletion = Swift.Result<Void, Error>
+    typealias InsertionCompletion = Swift.Result<Void, Error>
     
     typealias RetrievalResult = Swift.Result<[LocalArticle]?, Error>
     typealias RetrievalCompletion = (ArticlesFeedStore.RetrievalResult) -> Void
+    
+    func delete(_ articles: [LocalArticle], completion: @escaping (DeletionCompletion) -> Void)
+    func insert(_ articles: [LocalArticle], completion: @escaping (InsertionCompletion) -> Void)
+    func retrieve(completion: @escaping RetrievalCompletion)
 }
