@@ -8,7 +8,11 @@
 import Foundation
 
 public final class LocalFeedLoader {
+    private let articlesFeedStore: ArticlesFeedStore
     
+    init(articlesFeedStore: ArticlesFeedStore) {
+        self.articlesFeedStore = articlesFeedStore
+    }
 }
 
 extension LocalFeedLoader: FeedLoader {
