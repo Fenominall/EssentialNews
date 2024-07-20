@@ -32,6 +32,7 @@
 		4FAF798E2C394CC8002A0695 /* FeedItemsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAF798D2C394CC8002A0695 /* FeedItemsMapper.swift */; };
 		4FC2049E2C3975CC00A9555E /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC2049D2C3975CC00A9555E /* URLSessionHTTPClientTests.swift */; };
 		4FC204A22C39762B00A9555E /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC204A12C39762B00A9555E /* URLProtocolStub.swift */; };
+		4FE9042D2C4BD5F200A1B12A /* HTTPClientTaskWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE9042C2C4BD5F200A1B12A /* HTTPClientTaskWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		4FAF798D2C394CC8002A0695 /* FeedItemsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemsMapper.swift; sourceTree = "<group>"; };
 		4FC2049D2C3975CC00A9555E /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
 		4FC204A12C39762B00A9555E /* URLProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
+		4FE9042C2C4BD5F200A1B12A /* HTTPClientTaskWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientTaskWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 				4F27F4F72C3A75A30048B926 /* Helpers */,
 				4FAF798B2C39331C002A0695 /* RemoteFeedLoader.swift */,
 				4F292C1C2C3A9DB500DB77FE /* RemoteFeedImageDataLoader.swift */,
+				4FE9042C2C4BD5F200A1B12A /* HTTPClientTaskWrapper.swift */,
 				4FAF798D2C394CC8002A0695 /* FeedItemsMapper.swift */,
 				4F292C182C3A9B4B00DB77FE /* FeedImageDataMapper.swift */,
 			);
@@ -358,6 +361,7 @@
 				4F2F21632C388B5400C2BF4A /* Article.swift in Sources */,
 				4F6E85602C45891900845066 /* LocalArticle.swift in Sources */,
 				4F27F4F92C3A75A90048B926 /* HTTPURLResponse+StatusCode.swift in Sources */,
+				4FE9042D2C4BD5F200A1B12A /* HTTPClientTaskWrapper.swift in Sources */,
 				4F3D10FC2C406A0900759FD9 /* LocalFeedLoader.swift in Sources */,
 				4F27F4FC2C3A77020048B926 /* URLSessionHTTPClient.swift in Sources */,
 				4FAF798A2C393316002A0695 /* HTTPClient.swift in Sources */,
