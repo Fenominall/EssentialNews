@@ -8,14 +8,14 @@
 import Foundation
 
 public final class LocalFeedLoader {
-    private let articlesFeedStore: ArticlesFeedStore
+    private let store: ArticlesFeedStore
     
     init(articlesFeedStore: ArticlesFeedStore) {
-        self.articlesFeedStore = articlesFeedStore
+        self.store = articlesFeedStore
     }
 }
 
-// MARK: Loading Feed
+// MARK: - Loading Feed
 extension LocalFeedLoader: FeedLoader {
     public typealias LoadResult = FeedLoader.LoadFeedResult
     
@@ -44,7 +44,7 @@ extension LocalFeedLoader: FeedLoader {
     ) -> any FeedLoaderTask {
         let task = FeedLoaderTaskWrapper(completion)
         
-        articlesFeedStore.retrieve { [weak task] result in
+        store.retrieve { [weak task] result in
             guard let task = task else { return }
             switch result {
             case let .success(.some(savedCategories)):
@@ -57,6 +57,34 @@ extension LocalFeedLoader: FeedLoader {
             }
         }
         return task
+    }
+}
+
+// MARK: - Saving Feed
+extension LocalFeedLoader: FeedCache {
+    public typealias SaveResult = FeedCache.SaveResult
+    
+    public func save(
+        _ feed: [Article],
+        completion: @escaping (SaveResult) -> Void
+    ) {
+        store.delete { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success:
+                self.store.insert(feed.toLocale(), completion: completion)
+            case let .failure(error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    private func cache(_ articles: [Article], with completion: @escaping (SaveResult) -> Void) {
+        store.insert(articles.toLocale()) { [weak self] error in
+            guard self != nil else { return }
+            completion(error)
+        }
     }
 }
 
