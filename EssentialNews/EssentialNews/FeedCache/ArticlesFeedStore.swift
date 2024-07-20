@@ -14,7 +14,7 @@ public protocol ArticlesFeedStore {
     typealias RetrievalResult = Swift.Result<[LocalArticle]?, Error>
     typealias RetrievalCompletion = (ArticlesFeedStore.RetrievalResult) -> Void
     
-    func delete(_ articles: [LocalArticle], completion: @escaping (DeletionCompletion) -> Void)
+    func delete(completion: @escaping (DeletionCompletion) -> Void)
     func insert(_ articles: [LocalArticle], completion: @escaping (InsertionCompletion) -> Void)
     func retrieve(completion: @escaping RetrievalCompletion)
 }
