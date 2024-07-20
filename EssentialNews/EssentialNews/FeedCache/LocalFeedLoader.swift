@@ -46,13 +46,16 @@ extension LocalFeedLoader: FeedLoader {
     ) -> any FeedLoaderTask {
         let task = FeedLoaderTaskWrapper(completion)
         
-        store.retrieve { [weak task] result in
+        store.retrieve { [weak task, weak self] result in
             guard let task = task else { return }
+            guard let self = self else { return }
+            
             switch result {
             case let .success(.some(savedCategories)):
                 let articles = savedCategories.toModels()
                 task.complete(with: .success(articles))
             case let .failure(error):
+                self.store.deleteCachedFeed { _ in }
                 task.complete(with: .failure(error))
             case .success:
                 task.complete(with: .success([]))
@@ -77,7 +80,6 @@ extension LocalFeedLoader: FeedCache {
             case .success:
                 self.cache(feed, with: completion)
             case let .failure(error):
-                store.deleteCachedFeed { _ in }
                 completion(.failure(error))
             }
         }
