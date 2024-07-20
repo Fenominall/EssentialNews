@@ -83,4 +83,26 @@ public extension LocalSource {
     }
 }
 
+private extension Array where Element == Article {
+    func toLocale() -> [LocalArticle] {
+        return map {
+            LocalArticle(
+                source: $0.source.toLocalSource(),
+                author: $0.author,
+                title: $0.title,
+                description: $0.description,
+                url: $0.url,
+                urlToImage: $0.urlToImage,
+                publishedAt: $0.publishedAt,
+                content: $0.content
+            )
+        }
+    }
+}
+
+public extension Source {
+    func toLocalSource() -> LocalSource {
+        return LocalSource(id: self.id, name: self.name)
+    }
+}
 
