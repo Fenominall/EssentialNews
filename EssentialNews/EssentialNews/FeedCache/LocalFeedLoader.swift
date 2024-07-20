@@ -70,13 +70,14 @@ extension LocalFeedLoader: FeedCache {
         _ feed: [Article],
         completion: @escaping (SaveResult) -> Void
     ) {
-        store.delete { [weak self] result in
+        store.deleteCachedFeed { [weak self] result in
             guard let self = self else { return }
             
             switch result {
             case .success:
                 self.cache(feed, with: completion)
             case let .failure(error):
+                store.deleteCachedFeed { _ in }
                 completion(.failure(error))
             }
         }
