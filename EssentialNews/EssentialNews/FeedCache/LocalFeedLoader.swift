@@ -17,14 +17,16 @@ public final class LocalFeedLoader {
 
 // MARK: Loading Feed
 extension LocalFeedLoader: FeedLoader {
+    public typealias LoadResult = FeedLoader.LoadFeedResult
+    
     private final class FeedLoaderTaskWrapper: FeedLoaderTask {
-        private var completion: ((RemoteFeedLoader.LoadResult) -> Void)?
+        private var completion: ((LoadResult) -> Void)?
                 
-        init(_ completion: @escaping (RemoteFeedLoader.LoadResult) -> Void) {
+        init(_ completion: @escaping (LoadResult) -> Void) {
             self.completion = completion
         }
         
-        func complete(with result: RemoteFeedLoader.LoadResult) {
+        func complete(with result: LoadResult) {
             completion?(result)
         }
         
