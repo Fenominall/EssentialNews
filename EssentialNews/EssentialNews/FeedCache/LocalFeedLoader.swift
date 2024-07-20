@@ -47,3 +47,28 @@ extension LocalFeedLoader: FeedLoader {
         return task
     }
 }
+
+private extension Array where Element == LocalArticle {
+    func toModels() -> [Article] {
+        return map {
+            Article(
+                source: $0.source.toSourceModel(),
+                author: $0.author,
+                title: $0.title,
+                description: $0.description,
+                url: $0.url,
+                urlToImage: $0.urlToImage,
+                publishedAt: $0.publishedAt,
+                content: $0.content
+            )
+        }
+    }
+}
+
+public extension LocalSource {
+    func toSourceModel() -> Source {
+        return Source(id: self.id, name: self.name)
+    }
+}
+
+
