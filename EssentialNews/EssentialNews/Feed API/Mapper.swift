@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol Mapper {
+public protocol Mapper {
     associatedtype Output
     static func map(_ data: Data, from response: HTTPURLResponse) throws -> Output
 }
