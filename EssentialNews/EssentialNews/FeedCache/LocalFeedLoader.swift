@@ -44,6 +44,18 @@ extension LocalFeedLoader: FeedLoader {
     ) -> any FeedLoaderTask {
         let task = FeedLoaderTaskWrapper(completion)
         
+        articlesFeedStore.retrieve { [weak task] result in
+            guard let task = task else { return }
+            switch result {
+            case let .success(.some(savedCategories)):
+                let articles = savedCategories.toModels()
+                task.complete(with: .success(articles))
+            case let .failure(error):
+                task.complete(with: .failure(error))
+            case .success:
+                task.complete(with: .success([]))
+            }
+        }
         return task
     }
 }
