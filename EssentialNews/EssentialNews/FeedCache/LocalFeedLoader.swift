@@ -15,6 +15,7 @@ public final class LocalFeedLoader {
     }
 }
 
+// MARK: Loading Feed
 extension LocalFeedLoader: FeedLoader {
     private final class FeedLoaderTaskWrapper: FeedLoaderTask {
         private var completion: ((RemoteFeedLoader.LoadResult) -> Void)?
