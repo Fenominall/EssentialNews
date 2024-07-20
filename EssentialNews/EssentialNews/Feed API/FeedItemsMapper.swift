@@ -52,11 +52,15 @@ public final class FeedItemsMapper: Mapper {
         let name: String
     }
     
+    public enum Error: Swift.Error {
+        case invalidData
+    }
+    
     private static let jsonDecoder = JSONDecoder()
     
     public static func map(_ data: Data, from response: HTTPURLResponse) throws -> [Article] {
         guard response.isOK else {
-            throw RemoteFeedLoader.Error.invalidData
+            throw Error.invalidData
         }
         
         let root = try jsonDecoder.decode(Root.self, from: data)
