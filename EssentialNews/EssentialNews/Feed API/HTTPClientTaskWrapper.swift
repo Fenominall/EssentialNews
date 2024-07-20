@@ -7,7 +7,7 @@
 
 import Foundation
 
-private final class HTTPClientTaskWrapper<T>: FeedLoaderTask, FeedImageDataLoaderTask {
+public final class HTTPClientTaskWrapper<T>: FeedLoaderTask, FeedImageDataLoaderTask {
     private var completion: ((Swift.Result<T, Swift.Error>) -> Void)?
     
     var wrapped: HTTPClientTask?
@@ -20,7 +20,7 @@ private final class HTTPClientTaskWrapper<T>: FeedLoaderTask, FeedImageDataLoade
         completion?(result)
     }
     
-    func cancel() {
+    public func cancel() {
         preventFurtherCompletions()
         wrapped?.cancel()
     }
