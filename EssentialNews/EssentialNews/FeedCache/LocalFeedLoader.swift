@@ -9,9 +9,11 @@ import Foundation
 
 public final class LocalFeedLoader {
     private let store: ArticlesFeedStore
+    private let currentDate: () -> Date
     
-    init(articlesFeedStore: ArticlesFeedStore) {
-        self.store = articlesFeedStore
+    init(store: ArticlesFeedStore, currentDate: @escaping () -> Date) {
+        self.store = store
+        self.currentDate = currentDate
     }
 }
 
@@ -73,7 +75,7 @@ extension LocalFeedLoader: FeedCache {
             
             switch result {
             case .success:
-                self.store.insert(feed.toLocale(), completion: completion)
+                self.cache(feed, with: completion)
             case let .failure(error):
                 completion(.failure(error))
             }
@@ -81,7 +83,7 @@ extension LocalFeedLoader: FeedCache {
     }
     
     private func cache(_ articles: [Article], with completion: @escaping (SaveResult) -> Void) {
-        store.insert(articles.toLocale()) { [weak self] error in
+        store.insert(articles.toLocale(), timestamp: currentDate()) { [weak self] error in
             guard self != nil else { return }
             completion(error)
         }
