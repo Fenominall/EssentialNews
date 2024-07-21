@@ -93,6 +93,7 @@ extension LocalFeedLoader: FeedCache {
     }
 }
 
+// MARK: - Cache Validation
 extension LocalFeedLoader {
     public typealias ValidationResult = Result<Void, Error>
     private struct InvalidCache: Error {}
