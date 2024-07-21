@@ -16,6 +16,8 @@ public class ManagedCache: NSManagedObject {
     @NSManaged public var feed: NSOrderedSet
 }
 
-extension ManagedCache : Identifiable {
-    
+extension ManagedCache {
+    var localFeed: [LocalArticle] {
+        return feed.compactMap { ($0 as? ManagedArticle)?.local }
+    }
 }

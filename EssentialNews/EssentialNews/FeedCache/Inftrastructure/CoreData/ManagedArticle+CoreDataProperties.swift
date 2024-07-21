@@ -23,6 +23,20 @@ public class ManagedArticle: NSManagedObject {
     @NSManaged public var cache: ManagedCache
 }
 
-extension ManagedArticle : Identifiable {
-    
+extension ManagedArticle {
+    var local: LocalArticle {
+        return LocalArticle(
+            source: LocalSource(
+                id: source.id,
+                name: source.name
+            ),
+            author: author,
+            title: title,
+            description: description,
+            url: url,
+            urlToImage: urlToImage,
+            publishedAt: publishedAt,
+            content: content
+        )
+    }
 }

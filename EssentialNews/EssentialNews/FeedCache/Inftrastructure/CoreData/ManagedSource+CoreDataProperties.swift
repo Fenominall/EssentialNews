@@ -16,7 +16,3 @@ public class ManagedSource: NSManagedObject {
     @NSManaged public var name: String
     @NSManaged public var article: ManagedArticle
 }
-
-extension ManagedSource: Identifiable {
-    
-}
