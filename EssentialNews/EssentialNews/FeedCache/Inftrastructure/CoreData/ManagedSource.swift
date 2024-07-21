@@ -11,8 +11,8 @@ import CoreData
 
 
 @objc(ManagedSource)
-public class ManagedSource: NSManagedObject {
-    @NSManaged public var id: String?
-    @NSManaged public var name: String
-    @NSManaged public var article: ManagedArticle
+class ManagedSource: NSManagedObject {
+    @NSManaged var id: String?
+    @NSManaged var name: String
+    @NSManaged var article: ManagedArticle
 }
