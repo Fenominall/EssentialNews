@@ -11,16 +11,17 @@ import CoreData
 
 
 @objc(ManagedArticle)
-public class ManagedArticle: NSManagedObject {
-    @NSManaged public var author: String?
-    @NSManaged public var title: String
-    @NSManaged public var desscription: String?
-    @NSManaged public var url: URL
-    @NSManaged public var urlToImage: URL?
-    @NSManaged public var publishedAt: Date
-    @NSManaged public var content: String?
-    @NSManaged public var source: ManagedSource
-    @NSManaged public var cache: ManagedCache
+class ManagedArticle: NSManagedObject {
+    @NSManaged var author: String?
+    @NSManaged var title: String
+    @NSManaged var desscription: String?
+    @NSManaged var url: URL
+    @NSManaged var urlToImage: URL?
+    @NSManaged var publishedAt: Date
+    @NSManaged var content: String?
+    @NSManaged var data: Data?
+    @NSManaged var source: ManagedSource
+    @NSManaged var cache: ManagedCache
 }
 
 extension ManagedArticle {
