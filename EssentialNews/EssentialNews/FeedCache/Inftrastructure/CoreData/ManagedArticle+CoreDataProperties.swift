@@ -12,27 +12,17 @@ import CoreData
 
 @objc(ManagedArticle)
 public class ManagedArticle: NSManagedObject {
-
-}
-
-extension ManagedArticle {
-
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<ManagedArticle> {
-        return NSFetchRequest<ManagedArticle>(entityName: "ManagedArticle")
-    }
-
     @NSManaged public var author: String?
-    @NSManaged public var title: String?
+    @NSManaged public var title: String
     @NSManaged public var desscription: String?
-    @NSManaged public var url: URL?
+    @NSManaged public var url: URL
     @NSManaged public var urlToImage: URL?
-    @NSManaged public var publishedAt: Date?
+    @NSManaged public var publishedAt: Date
     @NSManaged public var content: String?
-    @NSManaged public var source: ManagedSource?
-    @NSManaged public var cache: ManagedCache?
-
+    @NSManaged public var source: ManagedSource
+    @NSManaged public var cache: ManagedCache
 }
 
 extension ManagedArticle : Identifiable {
-
+    
 }
