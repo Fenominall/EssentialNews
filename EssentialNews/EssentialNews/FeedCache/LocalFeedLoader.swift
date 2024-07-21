@@ -52,7 +52,7 @@ extension LocalFeedLoader: FeedLoader {
             
             switch result {
             case let .success(.some(savedCategories)):
-                let articles = savedCategories.toModels()
+                let articles = savedCategories.feed.toModels()
                 task.complete(with: .success(articles))
             case let .failure(error):
                 self.store.deleteCachedFeed { _ in }
@@ -89,6 +89,28 @@ extension LocalFeedLoader: FeedCache {
         store.insert(articles.toLocale(), timestamp: currentDate()) { [weak self] error in
             guard self != nil else { return }
             completion(error)
+        }
+    }
+}
+
+extension LocalFeedLoader {
+    public typealias ValidationResult = Result<Void, Error>
+    private struct InvalidCache: Error {}
+    
+    public func validateCache(completion: @escaping (ValidationResult) -> Void) {
+        store.retrieve { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .failure:
+                self.store.deleteCachedFeed(completion: completion)
+            case let .success(.some(cahce))
+                where !FeedCachePolicy
+                    .validate(cahce.timestamp, against: self.currentDate()):
+                self.store.deleteCachedFeed(completion: completion)
+            case .success:
+                completion(.success(()))
+            }
         }
     }
 }
