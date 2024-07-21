@@ -7,11 +7,13 @@
 
 import Foundation
 
+public typealias CachedFeed  = (feed: [LocalArticle], timestamp: Date)
+
 public protocol ArticlesFeedStore {
     typealias DeletionCompletion = Swift.Result<Void, Error>
     typealias InsertionCompletion = Swift.Result<Void, Error>
     
-    typealias RetrievalResult = Swift.Result<[LocalArticle]?, Error>
+    typealias RetrievalResult = Result<CachedFeed?, Error>
     typealias RetrievalCompletion = (ArticlesFeedStore.RetrievalResult) -> Void
     
     func deleteCachedFeed(completion: @escaping (DeletionCompletion) -> Void)
