@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ManagedArticle" representedClassName="ManagedArticle" syncable="YES">
+        <attribute name="author" optional="YES" attributeType="String"/>
+        <attribute name="content" optional="YES" attributeType="String"/>
+        <attribute name="desscription" optional="YES" attributeType="String"/>
+        <attribute name="publishedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" attributeType="String"/>
+        <attribute name="url" attributeType="URI"/>
+        <attribute name="urlToImage" optional="YES" attributeType="URI"/>
+        <relationship name="cache" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedCache" inverseName="feed" inverseEntity="ManagedCache"/>
+        <relationship name="source" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedSource" inverseName="article" inverseEntity="ManagedSource"/>
+    </entity>
+    <entity name="ManagedCache" representedClassName="ManagedCache" syncable="YES">
+        <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="feed" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="ManagedArticle" inverseName="cache" inverseEntity="ManagedArticle"/>
+    </entity>
+    <entity name="ManagedSource" representedClassName="ManagedSource" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="article" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedArticle" inverseName="source" inverseEntity="ManagedArticle"/>
+    </entity>
+</model>

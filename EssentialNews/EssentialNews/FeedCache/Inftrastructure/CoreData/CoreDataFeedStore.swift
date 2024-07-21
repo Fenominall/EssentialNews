@@ -11,7 +11,7 @@ public final class CoreDataFeedStore: FeedStore {
     public init() {}
     
     public func retrieve(completion: @escaping RetrievalCompletion) {
-        completion()
+        
     }
     
     public func deleteCachedFeed(completion: @escaping (DeletionCompletion) -> Void) {
