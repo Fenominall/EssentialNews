@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4F2F21492C388AE900C2BF4A"
-               BuildableName = "EssentialNews.framework"
-               BlueprintName = "EssentialNews"
+               BlueprintIdentifier = "4F8199DE2C4D93F300B88A4A"
+               BuildableName = "EssentialNewsiOS.framework"
+               BlueprintName = "EssentialNewsiOS"
                ReferencedContainer = "container:EssentialNews.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -30,22 +30,10 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:EssentialNewsTests.xctestplan"
+            reference = "container:../EssentialNewsiOSTests.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
-      <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4F2F21512C388AE900C2BF4A"
-               BuildableName = "EssentialNewsTests.xctest"
-               BlueprintName = "EssentialNewsTests"
-               ReferencedContainer = "container:EssentialNews.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -67,9 +55,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4F2F21492C388AE900C2BF4A"
-            BuildableName = "EssentialNews.framework"
-            BlueprintName = "EssentialNews"
+            BlueprintIdentifier = "4F8199DE2C4D93F300B88A4A"
+            BuildableName = "EssentialNewsiOS.framework"
+            BlueprintName = "EssentialNewsiOS"
             ReferencedContainer = "container:EssentialNews.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

@@ -1,0 +1,67 @@
+{
+  "configurations" : [
+    {
+      "id" : "E85BC3A6-1911-4716-BB78-A03D512DB215",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:EssentialNews.xcodeproj",
+          "identifier" : "4F2F21492C388AE900C2BF4A",
+          "name" : "EssentialNews"
+        }
+      ]
+    },
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "selectedTests" : [
+        "FeedImageDataMapperTest\/test_map_deliversInvalidDataErrorOn200HTTPResponseWithEmptyData()",
+        "FeedImageDataMapperTest\/test_map_deliversReceivedNonEmptyDataOn200HTTPResponse()",
+        "FeedImageDataMapperTest\/test_map_throwsErrorOnNon200HTTPResponse()",
+        "FeedItemsMapperTests\/test_map_deliverFeedItemsOn200HTTPResponseWithValidJSONItems()",
+        "FeedItemsMapperTests\/test_map_deliversNoItemsOn200HTTPResponseWithEmptyList()",
+        "FeedItemsMapperTests\/test_map_throwsErrorOn200HTTPResponseWithInvalidJSON()",
+        "FeedItemsMapperTests\/test_map_throwsErrorOnNon200HTTPResponse()",
+        "LoadFeedFromRemoteUseCaseTests\/test_init_doesNotRequestDataFromURL()",
+        "LoadFeedFromRemoteUseCaseTests\/test_loadTwice_requestsDataFromURLTwice()",
+        "LoadFeedFromRemoteUseCaseTests\/test_load_deliversErrorOn200HTTPResponseWithInvalidJSON()",
+        "LoadFeedFromRemoteUseCaseTests\/test_load_deliversErrorOnClientError()",
+        "LoadFeedFromRemoteUseCaseTests\/test_load_deliversErrorOnNon200HTTPResponse()",
+        "LoadFeedFromRemoteUseCaseTests\/test_load_deliversItemsOn200HTTPResponseWithJSONItems()",
+        "LoadFeedFromRemoteUseCaseTests\/test_load_deliversNoItemsOn200HTTPResponseWithEmptyJSONList()",
+        "LoadFeedFromRemoteUseCaseTests\/test_load_doesNotDeliverResultAfterSUTInstanceHasBeenDeallocated()",
+        "LoadFeedFromRemoteUseCaseTests\/test_load_requestsDataFromURL()",
+        "LoadRemoteFeedImageDataUseCaseTests\/test_cancelLoadImageDataURLTask_cancelsClientURLRequest()",
+        "LoadRemoteFeedImageDataUseCaseTests\/test_init_doesNotPerformAnyURLRequest()",
+        "LoadRemoteFeedImageDataUseCaseTests\/test_loadImageDataFromURLTwice_requestsDataFromURLTwice()",
+        "LoadRemoteFeedImageDataUseCaseTests\/test_loadImageDataFromURL_deliversErrorOnClientError()",
+        "LoadRemoteFeedImageDataUseCaseTests\/test_loadImageDataFromURL_deliversInvalidDataErrorOn200HTTPResponseWithEmptyData()",
+        "LoadRemoteFeedImageDataUseCaseTests\/test_loadImageDataFromURL_deliversInvalidDataErrorOnNon200HTTPResponse()",
+        "LoadRemoteFeedImageDataUseCaseTests\/test_loadImageDataFromURL_deliversReceivedNonEmptyDataOn200HTTPResponse()",
+        "LoadRemoteFeedImageDataUseCaseTests\/test_loadImageDataFromURL_doesNotDeliverResultAfterCancellingTask()",
+        "LoadRemoteFeedImageDataUseCaseTests\/test_loadImageData_requestsDataFromURL()",
+        "URLSessionHTTPClientTests\/test_cancelGetFromURLTask_cancelsURLRequest()",
+        "URLSessionHTTPClientTests\/test_getFromURL_failsOnAllInvalidRepresentationCases()",
+        "URLSessionHTTPClientTests\/test_getFromURL_failsOnRequestError()",
+        "URLSessionHTTPClientTests\/test_getFromURL_performsGETRequestWithURL()",
+        "URLSessionHTTPClientTests\/test_getFromURL_succeedsOnHTTPURLResponseWithData()",
+        "URLSessionHTTPClientTests\/test_getFromURL_succeedsWithEmptyDataOnHTTPURLResponseWithNilData()"
+      ],
+      "target" : {
+        "containerPath" : "container:EssentialNews.xcodeproj",
+        "identifier" : "4F2F21512C388AE900C2BF4A",
+        "name" : "EssentialNewsTests"
+      }
+    }
+  ],
+  "version" : 1
+}
