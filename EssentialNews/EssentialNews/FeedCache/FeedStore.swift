@@ -9,12 +9,12 @@ import Foundation
 
 public typealias CachedFeed  = (feed: [LocalArticle], timestamp: Date)
 
-public protocol ArticlesFeedStore {
+public protocol FeedStore {
     typealias DeletionCompletion = Swift.Result<Void, Error>
     typealias InsertionCompletion = Swift.Result<Void, Error>
     
     typealias RetrievalResult = Result<CachedFeed?, Error>
-    typealias RetrievalCompletion = (ArticlesFeedStore.RetrievalResult) -> Void
+    typealias RetrievalCompletion = (FeedStore.RetrievalResult) -> Void
     
     /// The completion handler can be invoked in any thread.
     /// Clients are responsible to dispatch to appropriate threads, if needed.
