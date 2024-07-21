@@ -7,7 +7,7 @@
 
 import Foundation
 
-public typealias CachedFeed  = (feed: [LocalArticle], timestamp: Date)
+public typealias CachedFeed = (feed: [LocalArticle], timestamp: Date)
 
 public protocol FeedStore {
     typealias DeletionCompletion = Swift.Result<Void, Error>
