@@ -3,6 +3,7 @@
     <entity name="ManagedArticle" representedClassName="ManagedArticle" syncable="YES">
         <attribute name="author" optional="YES" attributeType="String"/>
         <attribute name="content" optional="YES" attributeType="String"/>
+        <attribute name="data" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="desscription" optional="YES" attributeType="String"/>
         <attribute name="publishedAt" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="title" attributeType="String"/>
