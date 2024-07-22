@@ -1,5 +1,5 @@
 //
-//  CellController.swift
+//  FeedArticleViewCell.swift
 //  EssentialNewsiOS
 //
 //  Created by Fenominall on 7/22/24.
