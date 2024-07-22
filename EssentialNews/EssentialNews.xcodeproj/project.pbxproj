@@ -189,6 +189,7 @@
 		4F2F214C2C388AE900C2BF4A /* EssentialNews */ = {
 			isa = PBXGroup;
 			children = (
+				4F8199FC2C4E76DE00B88A4A /* Shared Presentation */,
 				4F8199FB2C4E76C200B88A4A /* Feed Presentation */,
 				4F3D10FA2C4069F900759FD9 /* FeedCache */,
 				4F27F4FA2C3A76F70048B926 /* Shared API */,
@@ -318,6 +319,13 @@
 			children = (
 			);
 			path = "Feed Presentation";
+			sourceTree = "<group>";
+		};
+		4F8199FC2C4E76DE00B88A4A /* Shared Presentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Shared Presentation";
 			sourceTree = "<group>";
 		};
 		4FAF79802C392C90002A0695 /* Helpers */ = {
