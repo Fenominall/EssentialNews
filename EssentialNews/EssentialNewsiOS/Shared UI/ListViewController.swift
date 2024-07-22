@@ -10,6 +10,8 @@ import UIKit
 
 public final class ListViewController: UITableViewController, UITableViewDataSourcePrefetching {
     
+    public var onRefresh: (() -> Void)?
+    
     private lazy var dataSource: UITableViewDiffableDataSource<Int, CellController> = {
         .init(tableView: tableView) { (tableView, indexPath, controller) in
             return controller.dataSource.tableView(tableView, cellForRowAt: indexPath)
@@ -43,6 +45,15 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
         }
         // data source will check what change using the hashable implementation and only updates what is necessary
         dataSource.applySnapshotUsingReloadData(snapshot)
+    }
+    
+    func createRefreshControl() {
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+    }
+    
+    @objc private func refresh() {
+        onRefresh?()
     }
 }
 
