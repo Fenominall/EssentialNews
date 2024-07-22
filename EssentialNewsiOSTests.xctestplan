@@ -22,10 +22,6 @@
   },
   "testTargets" : [
     {
-      "parallelizable" : true,
-      "selectedTests" : [
-
-      ],
       "target" : {
         "containerPath" : "container:EssentialNews.xcodeproj",
         "identifier" : "4F8199E52C4D93F300B88A4A",
