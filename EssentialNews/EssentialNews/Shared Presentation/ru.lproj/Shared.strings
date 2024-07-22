@@ -5,3 +5,5 @@
   Created by Fenominall on 7/22/24.
   
 */
+
+"GENERIC_CONNECTION_ERROR" = "Невозможно подключиться к серверу";
