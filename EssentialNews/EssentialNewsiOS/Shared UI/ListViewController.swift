@@ -19,6 +19,13 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
     public override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+        createRefreshControl()
+        refresh()
+    }
+    
+    public override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.sizeTableHeaderFit()
     }
     
     private func configureTableView() {
