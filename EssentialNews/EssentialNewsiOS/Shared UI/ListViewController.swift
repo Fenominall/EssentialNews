@@ -7,9 +7,10 @@
 
 import Foundation
 import UIKit
+import EssentialNews
 
 public final class ListViewController: UITableViewController, UITableViewDataSourcePrefetching {
-    
+    // MARK: Properties
     public var onRefresh: (() -> Void)?
     
     private lazy var dataSource: UITableViewDiffableDataSource<Int, CellController> = {
@@ -18,6 +19,7 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
         }
     }()
     
+    // MARK: Lifecycle
     public override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
@@ -30,6 +32,7 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
         tableView.sizeTableHeaderFit()
     }
     
+    // MARK: Helper Methods
     private func configureTableView() {
         dataSource.defaultRowAnimation = .fade
         tableView.dataSource = dataSource
@@ -57,6 +60,7 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
     }
 }
 
+// MARK: - Data Source and Delegation methods for the ListViewController
 extension ListViewController {
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let delegate = cellController(at: indexPath)?.delegate
@@ -87,8 +91,18 @@ extension ListViewController {
         }
     }
     
-    // MARK: - Helpers
+    // MARK: Helpers
     private func cellController(at indexPath: IndexPath) -> CellController? {
         dataSource.itemIdentifier(for: indexPath)
+    }
+}
+
+extension ListViewController: ResourceLoadingView, ResourceErrorView {
+    public func display(_ viewModel: EssentialNews.ResourceLoadingViewModel) {
+        refreshControl?.update(isRefreshing: viewModel.isLoading)
+    }
+    
+    public func display(_ viewModel: EssentialNews.ResourceErrorViewModel) {
+        
     }
 }
