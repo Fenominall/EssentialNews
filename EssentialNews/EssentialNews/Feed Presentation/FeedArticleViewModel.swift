@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct FeedImageViewModel {
+public struct FeedArticleViewModel {
     public let title: String
     public let urlToImage: URL?
     public let publishedAt: Date
