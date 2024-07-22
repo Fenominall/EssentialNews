@@ -34,7 +34,14 @@ public final class FeedArticleViewCell: UITableViewCell {
         return label
     }()
     
-    public lazy var rightImageView: UIImageView = {
+    public lazy var articlesImageContainer: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .secondarySystemBackground
+        return view
+    }()
+    
+    public lazy var articleImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .lightGray
         imageView.contentMode = .scaleAspectFill
@@ -64,7 +71,7 @@ public final class FeedArticleViewCell: UITableViewCell {
     }()
     
     private lazy var horizontalStackView: UIStackView = {
-        let horizontalStackView = UIStackView(arrangedSubviews: [rightImageView, verticalStackView])
+        let horizontalStackView = UIStackView(arrangedSubviews: [articlesImageContainer, verticalStackView])
         horizontalStackView.axis = .horizontal
         horizontalStackView.spacing = 12
         horizontalStackView.alignment = .center
@@ -89,10 +96,13 @@ public final class FeedArticleViewCell: UITableViewCell {
             containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
             containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
             
-            rightImageView.widthAnchor.constraint(equalToConstant: 70),
-            rightImageView.heightAnchor.constraint(equalToConstant: 70),
-            retryButton.centerXAnchor.constraint(equalTo: rightImageView.centerXAnchor),
-            retryButton.centerYAnchor.constraint(equalTo: rightImageView.centerYAnchor),
+            articleImageView.widthAnchor.constraint(equalToConstant: 70),
+            articleImageView.heightAnchor.constraint(equalToConstant: 70),
+            articleImageView.centerXAnchor.constraint(equalTo: articlesImageContainer.centerXAnchor),
+            articleImageView.centerYAnchor.constraint(equalTo: articlesImageContainer.centerYAnchor),
+            
+            retryButton.centerXAnchor.constraint(equalTo: articleImageView.centerXAnchor),
+            retryButton.centerYAnchor.constraint(equalTo: articleImageView.centerYAnchor),
             
             horizontalStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             horizontalStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
