@@ -26,10 +26,9 @@ public final class RemoteFeedLoader: FeedLoader {
         case invalidData
     }
     
-    @discardableResult
-    public func load(completion: @escaping (LoadResult) -> Void) -> FeedLoaderTask {
-        let task = HTTPClientTaskWrapper(completion)
-        task.wrapped = client.get(from: url) { [weak self] result in
+    
+    public func load(completion: @escaping (LoadResult) -> Void) {
+        client.get(from: url) { [weak self] result in
             guard self != nil else { return }
             
             do {
@@ -44,6 +43,5 @@ public final class RemoteFeedLoader: FeedLoader {
                 completion(.failure(Error.invalidData))
             }
         }
-        return task
     }
 }

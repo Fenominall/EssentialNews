@@ -7,7 +7,7 @@
 
 import Foundation
 
-public final class HTTPClientTaskWrapper<T>: FeedLoaderTask, FeedImageDataLoaderTask {
+public final class HTTPClientTaskWrapper<T>: FeedImageDataLoaderTask {
     private var completion: ((Swift.Result<T, Swift.Error>) -> Void)?
     
     var wrapped: HTTPClientTask?
