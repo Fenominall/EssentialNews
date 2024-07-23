@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "container:EssentialNews/EssentialNews.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:EssentialNewsApp/EssentialNewsApp.xcodeproj">
+   </FileRef>
+</Workspace>
