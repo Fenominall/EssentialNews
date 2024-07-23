@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:EssentialNewsApp/EssentialNewsApp.xcodeproj">
+      location = "container:EssentialNews/EssentialNews.xcodeproj">
    </FileRef>
    <FileRef
-      location = "container:EssentialNews/EssentialNews.xcodeproj">
+      location = "group:EssentialNewsApp/EssentialNewsApp.xcodeproj">
    </FileRef>
 </Workspace>
