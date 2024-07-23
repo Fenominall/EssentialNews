@@ -41,6 +41,14 @@ extension ManagedArticle {
         )
     }
     
+    static func data(with url: URL, in context: NSManagedObjectContext) throws -> Data? {
+        // when loading data within the cells, looking for in memory temporary lookup for data of the url and use it instead of making a database request
+        
+        if let data = context.userInfo[url] as? Data { return data }
+        
+        return try first(with: url, in: context)?.data
+    }
+    
     static func first(with url: URL, in context: NSManagedObjectContext) throws -> ManagedArticle? {
         let request = NSFetchRequest<ManagedArticle>(entityName: entity().name!)
         request.predicate = NSPredicate(
