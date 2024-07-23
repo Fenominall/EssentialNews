@@ -24,7 +24,7 @@ final class MainQueueDispatchDecorator<T> {
 }
 
 extension MainQueueDispatchDecorator: FeedLoader where T == FeedLoader {
-    func load(completion: @escaping (LoadFeedResult) -> Void) -> FeedLoaderTask {
+    func load(completion: @escaping (LoadFeedResult) -> Void) {
         return decoratee.load { [weak self] result in
             self?.dispatch { completion(result) }
         }

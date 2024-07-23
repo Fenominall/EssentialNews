@@ -21,47 +21,23 @@ public final class LocalFeedLoader {
 extension LocalFeedLoader: FeedLoader {
     public typealias LoadResult = FeedLoader.LoadFeedResult
     
-    private final class FeedLoaderTaskWrapper: FeedLoaderTask {
-        private var completion: ((LoadResult) -> Void)?
-                
-        init(_ completion: @escaping (LoadResult) -> Void) {
-            self.completion = completion
-        }
-        
-        func complete(with result: LoadResult) {
-            completion?(result)
-        }
-        
-        func cancel() {
-            preventFurtherCompletions()
-        }
-        
-        private func preventFurtherCompletions() {
-            completion = nil
-        }
-    }
-    
     public func load(
         completion: @escaping (LoadFeedResult) -> Void
-    ) -> any FeedLoaderTask {
-        let task = FeedLoaderTaskWrapper(completion)
-        
-        store.retrieve { [weak task, weak self] result in
-            guard let task = task else { return }
+    ) {
+        store.retrieve { [weak self] result in
             guard let self = self else { return }
             
             switch result {
             case let .success(.some(savedCategories)):
                 let articles = savedCategories.feed.toModels()
-                task.complete(with: .success(articles))
+                completion(.success(articles))
             case let .failure(error):
                 self.store.deleteCachedFeed { _ in }
-                task.complete(with: .failure(error))
+                completion(.failure(error))
             case .success:
-                task.complete(with: .success([]))
+                completion(.success([]))
             }
         }
-        return task
     }
 }
 
