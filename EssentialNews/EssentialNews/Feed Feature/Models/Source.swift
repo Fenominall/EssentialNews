@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Source: Equatable {
+public struct Source: Hashable {
     public let id: String?
     public let name: String
     

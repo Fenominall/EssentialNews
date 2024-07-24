@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Article: Equatable {
+public struct Article: Hashable {
     public let source: Source
     public let author: String?
     public let title: String
@@ -39,14 +39,14 @@ public struct Article: Equatable {
 }
 
 extension Article {
-    public static func == (lhs: Article, rhs: Article) -> Bool {
-        return lhs.source == rhs.source &&
-        lhs.author == rhs.author &&
-        lhs.title == rhs.title &&
-        lhs.description == rhs.description &&
-        lhs.url == rhs.url &&
-        lhs.urlToImage == rhs.urlToImage &&
-        lhs.publishedAt == rhs.publishedAt &&
-        lhs.content == rhs.content
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(source)
+        hasher.combine(author)
+        hasher.combine(title)
+        hasher.combine(description)
+        hasher.combine(url)
+        hasher.combine(urlToImage)
+        hasher.combine(publishedAt)
+        hasher.combine(content)
     }
 }
