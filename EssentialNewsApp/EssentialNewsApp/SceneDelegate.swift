@@ -6,11 +6,22 @@
 //
 
 import UIKit
+import EssentialNews
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    private lazy var store: FeedStore & FeedImageDataStore = {
+        do {
+            return try CoreDataFeedStore(
+                storeURL: CoreDataFeedStore.storeURL)
+        } catch {
+            print("Error instantiating CoreData store: \(error.localizedDescription)")
+            assertionFailure("Failed to instantiate CoreData store with error: \(error.localizedDescription)")
+            return Null
+        }
+    }()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
