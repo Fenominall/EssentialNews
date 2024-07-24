@@ -9,4 +9,8 @@ import Foundation
 
 public struct FeedViewModel {
     public let feed: [Article]
+    
+    public init(feed: [Article]) {
+        self.feed = feed
+    }
 }
