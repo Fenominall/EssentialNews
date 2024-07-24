@@ -28,17 +28,12 @@ public final class RemoteFeedImageDataLoader: FeedImageDataLoader {
         task.wrapped = client.get(from: url) { [weak self] result in
             guard self != nil else { return }
             
-            do {
-                switch result {
-                case let .success((data, response)):
-                    let data = try FeedImageDataMapper.map(data, from: response)
-                    task.complete(with: .success(data))
-                case .failure:
-                    task.complete(with: .failure(Error.connectivity))
-                }
-            } catch {
-                task.complete(with: .failure(Error.invalidData))
-            }
+            task.complete(with: result
+                .mapError { _ in Error.connectivity }
+                .flatMap { (data, response) in
+                    let isValidResponse = response.isOK && !data.isEmpty
+                    return isValidResponse ? .success(data) : .failure(Error.invalidData)
+                })
         }
         return task
     }
