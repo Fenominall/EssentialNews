@@ -22,7 +22,7 @@ public final class FeedArticleCellController: NSObject {
     private let selection: () -> Void
     private var cell: FeedArticleViewCell?
     
-    init(
+    public init(
         viewModel: FeedArticleViewModel,
         delegate: FeedArticlesCellControllerDelegate,
         selection: @escaping () -> Void
