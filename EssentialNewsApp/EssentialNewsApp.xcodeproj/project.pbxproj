@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4FAAF7582C514A5F005E6918 /* FeedLoaderPresentationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAAF7572C514A5F005E6918 /* FeedLoaderPresentationAdapter.swift */; };
+		4FAAF75A2C514A85005E6918 /* FeedImageDataLoaderPresentationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAAF7592C514A85005E6918 /* FeedImageDataLoaderPresentationAdapter.swift */; };
+		4FAAF75C2C514ACA005E6918 /* FeedViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAAF75B2C514ACA005E6918 /* FeedViewAdapter.swift */; };
 		4FAD60D72C4EE1A500094765 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAD60D62C4EE1A500094765 /* AppDelegate.swift */; };
 		4FAD60D92C4EE1A500094765 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAD60D82C4EE1A500094765 /* SceneDelegate.swift */; };
 		4FAD60E02C4EE1A700094765 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FAD60DF2C4EE1A700094765 /* Assets.xcassets */; };
@@ -47,6 +50,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4FAAF7572C514A5F005E6918 /* FeedLoaderPresentationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoaderPresentationAdapter.swift; sourceTree = "<group>"; };
+		4FAAF7592C514A85005E6918 /* FeedImageDataLoaderPresentationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoaderPresentationAdapter.swift; sourceTree = "<group>"; };
+		4FAAF75B2C514ACA005E6918 /* FeedViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewAdapter.swift; sourceTree = "<group>"; };
 		4FAD60D32C4EE1A500094765 /* EssentialNewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EssentialNewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FAD60D62C4EE1A500094765 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FAD60D82C4EE1A500094765 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +88,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4FAAF75D2C514AE3005E6918 /* Feed UI Composer */ = {
+			isa = PBXGroup;
+			children = (
+				4FF2B0842C4EE5F3003F543B /* FeedUIComposer.swift */,
+				4FAAF7572C514A5F005E6918 /* FeedLoaderPresentationAdapter.swift */,
+				4FAAF75B2C514ACA005E6918 /* FeedViewAdapter.swift */,
+				4FAAF7592C514A85005E6918 /* FeedImageDataLoaderPresentationAdapter.swift */,
+			);
+			path = "Feed UI Composer";
+			sourceTree = "<group>";
+		};
+		4FAAF75E2C514AED005E6918 /* Shared Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4FF2B0882C501936003F543B /* MainQueueDispatchDecorator.swift */,
+				4FF2B0862C4F8FD0003F543B /* WeakRefVirtualProxy.swift */,
+			);
+			path = "Shared Helpers";
+			sourceTree = "<group>";
+		};
 		4FAD60CA2C4EE1A500094765 = {
 			isa = PBXGroup;
 			children = (
@@ -104,11 +130,10 @@
 		4FAD60D52C4EE1A500094765 /* EssentialNewsApp */ = {
 			isa = PBXGroup;
 			children = (
+				4FAAF75E2C514AED005E6918 /* Shared Helpers */,
+				4FAAF75D2C514AE3005E6918 /* Feed UI Composer */,
 				4FAD60D62C4EE1A500094765 /* AppDelegate.swift */,
 				4FAD60D82C4EE1A500094765 /* SceneDelegate.swift */,
-				4FF2B0842C4EE5F3003F543B /* FeedUIComposer.swift */,
-				4FF2B0882C501936003F543B /* MainQueueDispatchDecorator.swift */,
-				4FF2B0862C4F8FD0003F543B /* WeakRefVirtualProxy.swift */,
 				4FAD60DF2C4EE1A700094765 /* Assets.xcassets */,
 				4FAD60E12C4EE1A700094765 /* LaunchScreen.storyboard */,
 				4FAD60E42C4EE1A700094765 /* Info.plist */,
@@ -234,7 +259,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FAAF75C2C514ACA005E6918 /* FeedViewAdapter.swift in Sources */,
+				4FAAF7582C514A5F005E6918 /* FeedLoaderPresentationAdapter.swift in Sources */,
 				4FF2B0852C4EE5F3003F543B /* FeedUIComposer.swift in Sources */,
+				4FAAF75A2C514A85005E6918 /* FeedImageDataLoaderPresentationAdapter.swift in Sources */,
 				4FF2B0872C4F8FD0003F543B /* WeakRefVirtualProxy.swift in Sources */,
 				4FAD60D72C4EE1A500094765 /* AppDelegate.swift in Sources */,
 				4FF2B0892C501936003F543B /* MainQueueDispatchDecorator.swift in Sources */,
