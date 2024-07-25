@@ -43,7 +43,6 @@ public final class FeedArticleViewCell: UITableViewCell {
     
     public lazy var articleImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .lightGray
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -86,9 +85,18 @@ public final class FeedArticleViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        configureCell()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func configureCell() {
         contentView.addSubview(containerView)
         containerView.addSubview(horizontalStackView)
         containerView.addSubview(retryButton)
+        articlesImageContainer.addSubview(articleImageView)
         
         NSLayoutConstraint.activate([
             containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 18),
@@ -96,6 +104,8 @@ public final class FeedArticleViewCell: UITableViewCell {
             containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
             containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
             
+            articlesImageContainer.widthAnchor.constraint(equalToConstant: 70),
+            articlesImageContainer.heightAnchor.constraint(equalToConstant: 70),
             articleImageView.widthAnchor.constraint(equalToConstant: 70),
             articleImageView.heightAnchor.constraint(equalToConstant: 70),
             articleImageView.centerXAnchor.constraint(equalTo: articlesImageContainer.centerXAnchor),
@@ -109,9 +119,5 @@ public final class FeedArticleViewCell: UITableViewCell {
             horizontalStackView.topAnchor.constraint(equalTo: containerView.topAnchor),
             horizontalStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
         ])
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
