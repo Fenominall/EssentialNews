@@ -7,6 +7,7 @@
 
 import XCTest
 import EssentialNews
+import EssentialNewsApp
 
 class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
     

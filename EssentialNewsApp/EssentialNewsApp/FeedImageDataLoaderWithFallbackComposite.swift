@@ -7,11 +7,11 @@
 
 import EssentialNews
 
-class FeedImageDataLoaderWithFallbackComposite: FeedImageDataLoader {
+public class FeedImageDataLoaderWithFallbackComposite: FeedImageDataLoader {
     private let primary: FeedImageDataLoader
     private let fallback: FeedImageDataLoader
     
-    init(primary: FeedImageDataLoader, fallback: FeedImageDataLoader) {
+    public init(primary: FeedImageDataLoader, fallback: FeedImageDataLoader) {
         self.primary = primary
         self.fallback = fallback
     }
@@ -24,7 +24,7 @@ class FeedImageDataLoaderWithFallbackComposite: FeedImageDataLoader {
         }
     }
     
-    func loadImageData(
+    public func loadImageData(
         from url: URL,
         completion: @escaping (FeedImageDataLoader.Result) -> Void
     ) -> FeedImageDataLoaderTask {
