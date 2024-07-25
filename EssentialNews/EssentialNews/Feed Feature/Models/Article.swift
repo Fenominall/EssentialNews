@@ -37,16 +37,3 @@ public struct Article: Hashable {
         self.content = content
     }
 }
-
-extension Article {
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(source)
-        hasher.combine(author)
-        hasher.combine(title)
-        hasher.combine(description)
-        hasher.combine(url)
-        hasher.combine(urlToImage)
-        hasher.combine(publishedAt)
-        hasher.combine(content)
-    }
-}
