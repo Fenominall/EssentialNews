@@ -42,7 +42,6 @@ final class FeedItemsMapperTests: XCTestCase {
             .map(emptyJSON,
                  from: HTTPURLResponse(statusCode: 200))
         
-        print("HERE IS THE RESULT \(result)")
         XCTAssertEqual(result, [])
     }
     
