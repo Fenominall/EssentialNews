@@ -7,4 +7,7 @@
    <FileRef
       location = "group:EssentialNewsApp/EssentialNewsApp.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:EssentialNewsApp.xctestplan">
+   </FileRef>
 </Workspace>

@@ -1,0 +1,38 @@
+{
+  "configurations" : [
+    {
+      "id" : "8487E8E3-4EB4-4961-A296-C171881FC711",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:EssentialNewsApp.xcodeproj",
+          "identifier" : "4FAD60D22C4EE1A500094765",
+          "name" : "EssentialNewsApp"
+        }
+      ]
+    },
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:EssentialNewsApp.xcodeproj",
+      "identifier" : "4FAD60D22C4EE1A500094765",
+      "name" : "EssentialNewsApp"
+    },
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:EssentialNewsApp.xcodeproj",
+        "identifier" : "4FAD60E82C4EE1A700094765",
+        "name" : "EssentialNewsAppTests"
+      }
+    }
+  ],
+  "version" : 1
+}

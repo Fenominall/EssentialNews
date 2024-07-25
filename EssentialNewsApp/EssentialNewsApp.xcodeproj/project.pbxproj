@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4F837B202C514E7900C455ED /* NullStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F837B1F2C514E7900C455ED /* NullStore.swift */; };
+		4F837B222C52A75400C455ED /* FeedLoaderWithFallbackCompositeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F837B212C52A75400C455ED /* FeedLoaderWithFallbackCompositeTests.swift */; };
 		4FAAF7582C514A5F005E6918 /* FeedLoaderPresentationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAAF7572C514A5F005E6918 /* FeedLoaderPresentationAdapter.swift */; };
 		4FAAF75A2C514A85005E6918 /* FeedImageDataLoaderPresentationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAAF7592C514A85005E6918 /* FeedImageDataLoaderPresentationAdapter.swift */; };
 		4FAAF75C2C514ACA005E6918 /* FeedViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAAF75B2C514ACA005E6918 /* FeedViewAdapter.swift */; };
@@ -15,7 +16,6 @@
 		4FAD60D92C4EE1A500094765 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAD60D82C4EE1A500094765 /* SceneDelegate.swift */; };
 		4FAD60E02C4EE1A700094765 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FAD60DF2C4EE1A700094765 /* Assets.xcassets */; };
 		4FAD60E32C4EE1A700094765 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4FAD60E22C4EE1A700094765 /* Base */; };
-		4FAD60EE2C4EE1A700094765 /* EssentialNewsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAD60ED2C4EE1A700094765 /* EssentialNewsAppTests.swift */; };
 		4FAD61082C4EE20D00094765 /* EssentialNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FAD61072C4EE20D00094765 /* EssentialNews.framework */; };
 		4FAD61092C4EE20D00094765 /* EssentialNews.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4FAD61072C4EE20D00094765 /* EssentialNews.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4FAD610C2C4EE21100094765 /* EssentialNewsiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FAD610B2C4EE21100094765 /* EssentialNewsiOS.framework */; };
@@ -52,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		4F837B1F2C514E7900C455ED /* NullStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullStore.swift; sourceTree = "<group>"; };
+		4F837B212C52A75400C455ED /* FeedLoaderWithFallbackCompositeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoaderWithFallbackCompositeTests.swift; sourceTree = "<group>"; };
 		4FAAF7572C514A5F005E6918 /* FeedLoaderPresentationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoaderPresentationAdapter.swift; sourceTree = "<group>"; };
 		4FAAF7592C514A85005E6918 /* FeedImageDataLoaderPresentationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoaderPresentationAdapter.swift; sourceTree = "<group>"; };
 		4FAAF75B2C514ACA005E6918 /* FeedViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewAdapter.swift; sourceTree = "<group>"; };
@@ -62,7 +63,6 @@
 		4FAD60E22C4EE1A700094765 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4FAD60E42C4EE1A700094765 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FAD60E92C4EE1A700094765 /* EssentialNewsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialNewsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4FAD60ED2C4EE1A700094765 /* EssentialNewsAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialNewsAppTests.swift; sourceTree = "<group>"; };
 		4FAD61072C4EE20D00094765 /* EssentialNews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EssentialNews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FAD610B2C4EE21100094765 /* EssentialNewsiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EssentialNewsiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FF2B0842C4EE5F3003F543B /* FeedUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUIComposer.swift; sourceTree = "<group>"; };
@@ -147,7 +147,7 @@
 		4FAD60EC2C4EE1A700094765 /* EssentialNewsAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				4FAD60ED2C4EE1A700094765 /* EssentialNewsAppTests.swift */,
+				4F837B212C52A75400C455ED /* FeedLoaderWithFallbackCompositeTests.swift */,
 			);
 			path = EssentialNewsAppTests;
 			sourceTree = "<group>";
@@ -215,6 +215,7 @@
 					};
 					4FAD60E82C4EE1A700094765 = {
 						CreatedOnToolsVersion = 15.4;
+						LastSwiftMigration = 1540;
 						TestTargetID = 4FAD60D22C4EE1A500094765;
 					};
 				};
@@ -278,7 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FAD60EE2C4EE1A700094765 /* EssentialNewsAppTests.swift in Sources */,
+				4F837B222C52A75400C455ED /* FeedLoaderWithFallbackCompositeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +485,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5YJ9NPM7MQ;
@@ -493,6 +495,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.fenominall.EssentialNewsAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EssentialNewsApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EssentialNewsApp";
@@ -504,6 +507,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5YJ9NPM7MQ;
