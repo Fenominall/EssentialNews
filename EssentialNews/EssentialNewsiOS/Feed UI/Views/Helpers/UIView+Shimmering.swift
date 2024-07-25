@@ -48,6 +48,8 @@ extension UIView {
     }
     
     private func stopShimmering() {
-        layer.mask = nil
+        DispatchQueue.main.async { [weak self] in
+            self?.layer.mask = nil
+        }
     }
 }
