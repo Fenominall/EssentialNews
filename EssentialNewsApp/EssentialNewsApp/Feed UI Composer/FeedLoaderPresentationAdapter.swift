@@ -27,7 +27,6 @@ final class FeedLoaderPresentationAdapter<Resource, View: ResourceView> {
             switch result {
             case let .success(feed):
                 self?.presenter?.didFinishLoading(with: feed)
-                
             case let .failure(error):
                 self?.presenter?.didFinishLoading(with: error)
             }
