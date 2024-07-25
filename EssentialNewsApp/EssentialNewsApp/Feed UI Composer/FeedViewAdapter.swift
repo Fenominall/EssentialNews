@@ -13,12 +13,12 @@ final class FeedViewAdapter: ResourceView {
     private weak var controller: ListViewController?
     private let imageLoader: FeedImageDataLoader
     private let selection: (Article) -> Void
-    private let currentFeed: [Article: CellController]
+    private var currentFeed: [String: CellController]
     
     private typealias ImageDataPresentationAdapter = FeedImageDataLoaderPresentationAdapter<UIImage, WeakRefVirtualProxy<FeedArticleCellController>>
     
     init(
-        currentFeed: [Article: CellController] = [:],
+        currentFeed: [String: CellController] = [:],
         controller: ListViewController,
         imageLoader: FeedImageDataLoader,
         selection: @escaping (Article) -> Void
@@ -33,13 +33,15 @@ final class FeedViewAdapter: ResourceView {
         guard let controller = controller else { return }
         var currentFeed = self.currentFeed
         let feed: [CellController] = viewModel.feed.map { model in
-            if let contoller = currentFeed[model] {
-                return contoller
+            let id = model.url.absoluteString
+            
+            if let existingController = currentFeed[id] {
+                return existingController
             }
             
             let adapter = ImageDataPresentationAdapter(
                 model: model,
-                imageLoader: imageLoader
+                imageLoader: MainQueueDispatchDecorator(decoratee: imageLoader)
             )
             
             let view = FeedArticleCellController(
@@ -55,10 +57,11 @@ final class FeedViewAdapter: ResourceView {
                 errorView: WeakRefVirtualProxy(view),
                 mapper: mapDataIntoImage)
             
-            let controller = CellController(id: model ,view)
-            currentFeed[model] = controller
+            let controller = CellController(id: id, view)
+            currentFeed[id] = controller
             return controller
         }
+        self.currentFeed = currentFeed
         controller.display(feed)
     }
     
