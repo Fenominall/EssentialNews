@@ -34,6 +34,7 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
     
     // MARK: Helper Methods
     private func configureTableView() {
+        tableView.register(FeedArticleViewCell.self, forCellReuseIdentifier: String(describing: FeedArticleViewCell.self))
         dataSource.defaultRowAnimation = .fade
         tableView.dataSource = dataSource
     }
