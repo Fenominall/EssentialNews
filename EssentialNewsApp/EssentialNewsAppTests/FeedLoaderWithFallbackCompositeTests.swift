@@ -75,20 +75,6 @@ class FeedLoaderWithFallbackCompositeTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
-    private func uniqueFeed() -> [Article] {
-        return [Article(
-            source: Source(id: "anyId", name: "anyName"),
-            author: "author",
-            title: "title",
-            description: "description",
-            url: anyURL(),
-            urlToImage: anyURL(),
-            publishedAt: Date(),
-            content: "a content"
-        )
-        ]
-    }
-    
     private class LoaderStub: FeedLoader {
         private let result: FeedLoader.LoadFeedResult
         
