@@ -13,8 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     private lazy var httpClient: HTTPClient = {
-        URLSessionHTTPClient(
-            session: URLSession(configuration: .ephemeral))
+        makeRemoteClient()
     }()
     
     private lazy var store: FeedStore & FeedImageDataStore = {
@@ -49,14 +48,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private lazy var navigationController = UINavigationController(
         rootViewController: FeedUIComposer
             .feedComposedWith(
-                feedLoader: remoteFeedLoader,
-                imageLoader: remoteImageLoader,
+                feedLoader: FeedLoaderWithFallbackComposite(
+                    primary: FeedLoaderCacheDecorator(
+                        decoratee: remoteFeedLoader,
+                        cache: localFeedLoader),
+                    fallback: localFeedLoader),
+                imageLoader: FeedImageDataLoaderWithFallbackComposite(
+                    primary: localFeedImageDataLoader,
+                    fallback: FeedImageDataLoaderCacheDecorator(
+                        decoratee: remoteImageLoader,
+                        cache: localFeedImageDataLoader)),
                 selection: { _ in }
             )
     )
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
+        let remoteClient = makeRemoteClient()
         
         window = UIWindow(windowScene: scene)
         configureWindow()
@@ -70,5 +78,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillResignActive(_ scene: UIScene) {
         localFeedLoader.validateCache { _ in  }
     }
+    
+    
+    // MARK: - Helpers
+    private func makeRemoteClient() -> HTTPClient {
+        switch UserDefaults.standard.string(forKey: "connectivity") {
+        case "offline":
+            return AlwaysFailingHTTPClient()
+            
+        default:
+            return URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
+        }
+    }
 }
 
+private class AlwaysFailingHTTPClient: HTTPClient {
+    private class Task: HTTPClientTask {
+        func cancel() {}
+    }
+    
+    func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void) -> HTTPClientTask {
+        completion(.failure(NSError(domain: "offline", code: 0)))
+        return Task()
+    }
+}
