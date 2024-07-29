@@ -17,7 +17,7 @@ final class FeedUIComposer {
     static func feedComposedWith(feedLoader: FeedLoader, imageLoader: FeedImageDataLoader, selection: @escaping (Article) -> Void) -> ListViewController {
         let presentationAdapter = FeedPresentationAdapter(loader: MainQueueDispatchDecorator(decoratee: feedLoader))
         let feedViewController = ListViewController()
-        
+        feedViewController.title = "News"
         feedViewController.onRefresh = presentationAdapter.loadResource
         
         presentationAdapter.presenter = LoadResourcePresenter(
