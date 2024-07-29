@@ -13,8 +13,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     private lazy var httpClient: HTTPClient = {
-        makeRemoteClient()
-    }()
+            URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
+        }()
     
     private lazy var store: FeedStore & FeedImageDataStore = {
         do {
@@ -64,8 +64,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
-        let remoteClient = makeRemoteClient()
-        
         window = UIWindow(windowScene: scene)
         configureWindow()
     }
@@ -79,25 +77,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         localFeedLoader.validateCache { _ in  }
     }
     
-    
-    // MARK: - Helpers
-    private func makeRemoteClient() -> HTTPClient {
-        #if DEBUG
-        if UserDefaults.standard.string(forKey: "connectivity") == "offline" {
-            return AlwaysFailingHTTPClient()
-        }
-        #endif
-            return URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
-    }
-}
-
-private class AlwaysFailingHTTPClient: HTTPClient {
-    private class Task: HTTPClientTask {
-        func cancel() {}
-    }
-    
-    func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void) -> HTTPClientTask {
-        completion(.failure(NSError(domain: "offline", code: 0)))
-        return Task()
-    }
 }
