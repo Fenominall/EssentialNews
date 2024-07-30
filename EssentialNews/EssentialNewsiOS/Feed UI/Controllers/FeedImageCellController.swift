@@ -42,6 +42,7 @@ extension FeedArticleCellController: UITableViewDataSource, UITableViewDelegate,
         cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FeedArticleViewCell.self)) as? FeedArticleViewCell
         
         cell?.descriptionLabel.text = viewModel.title
+        cell?.publishedDateLabel.text = convertDate(with: viewModel.publishedAt)
         cell?.onRetry = { [weak self] in
             self?.delegate.didRequestImage()
         }
@@ -86,8 +87,6 @@ extension FeedArticleCellController: ResourceView, ResourceErrorView, ResourceLo
     }
     
     public func display(_ viewModel: EssentialNews.ResourceErrorViewModel) {
-        DispatchQueue.main.async { [weak self] in
-            self?.cell?.retryButton.isHidden = viewModel.message == nil
-        }
+        cell?.retryButton.isHidden = viewModel.message == nil
     }
 }
