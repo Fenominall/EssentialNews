@@ -64,7 +64,7 @@ public final class FeedArticleViewCell: UITableViewCell {
     private lazy var verticalStackView: UIStackView = {
         let verticalStackView = UIStackView(arrangedSubviews: [descriptionLabel, publishedDateLabel])
         verticalStackView.axis = .vertical
-        verticalStackView.spacing = 4
+        verticalStackView.spacing = 10
         verticalStackView.translatesAutoresizingMaskIntoConstraints = false
         return verticalStackView
     }()
