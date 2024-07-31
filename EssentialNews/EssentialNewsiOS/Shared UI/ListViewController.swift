@@ -12,6 +12,7 @@ import EssentialNews
 public final class ListViewController: UITableViewController, UITableViewDataSourcePrefetching {
     // MARK: Properties
     public var onRefresh: (() -> Void)?
+    private(set) public var errorView = ErrorView()
     
     private lazy var dataSource: UITableViewDiffableDataSource<Int, CellController> = {
         .init(tableView: tableView) { (tableView, indexPath, controller) in
@@ -37,6 +38,13 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
         tableView.register(FeedArticleViewCell.self, forCellReuseIdentifier: String(describing: FeedArticleViewCell.self))
         dataSource.defaultRowAnimation = .fade
         tableView.dataSource = dataSource
+        tableView.tableHeaderView = errorView.makeContainer()
+        
+        errorView.onHide = { [weak self] in
+            self?.tableView.beginUpdates()
+            self?.tableView.sizeTableHeaderFit()
+            self?.tableView.endUpdates()
+        }
     }
     
     public func display(_ sections: [CellController]...) {
@@ -104,6 +112,6 @@ extension ListViewController: ResourceLoadingView, ResourceErrorView {
     }
     
     public func display(_ viewModel: EssentialNews.ResourceErrorViewModel) {
-        
+        errorView.message = viewModel.message
     }
 }

@@ -26,7 +26,9 @@ extension LocalFeedImageDataLoader: FeedImageDataCache {
         store.insert(data, for: url) { [weak self] result in
             guard self != nil else { return }
             
-            completion(result.mapError { _ in SaveError.failed })
+            completion(result.mapError { _ in
+                return SaveError.failed
+            })
         }
     }
 }
