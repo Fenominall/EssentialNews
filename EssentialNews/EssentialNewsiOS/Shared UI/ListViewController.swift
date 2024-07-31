@@ -25,6 +25,7 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
         super.viewDidLoad()
         configureTableView()
         createRefreshControl()
+        configureErrorView()
         refresh()
     }
     
@@ -39,8 +40,13 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
         dataSource.defaultRowAnimation = .fade
         tableView.dataSource = dataSource
         tableView.tableHeaderView = errorView.makeContainer()
+    }
+    
+    private func configureErrorView() {
+        errorView.isUserInteractionEnabled = true
         
         errorView.onHide = { [weak self] in
+            print("ErrorView onHide triggered")
             self?.tableView.beginUpdates()
             self?.tableView.sizeTableHeaderFit()
             self?.tableView.endUpdates()
