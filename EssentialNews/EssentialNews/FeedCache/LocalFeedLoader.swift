@@ -20,6 +20,7 @@ public final class LocalFeedLoader {
 // MARK: - Loading Feed
 extension LocalFeedLoader: FeedLoader {
     public typealias LoadResult = FeedLoader.LoadFeedResult
+    private struct EmptyCacheError: Error {}
     
     public func load(
         completion: @escaping (LoadFeedResult) -> Void
@@ -34,8 +35,8 @@ extension LocalFeedLoader: FeedLoader {
             case let .failure(error):
                 self.store.deleteCachedFeed { _ in }
                 completion(.failure(error))
-            case .success:
-                completion(.success([]))
+            case .success(.none):
+                completion(.failure(EmptyCacheError()))
             }
         }
     }
