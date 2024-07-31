@@ -46,7 +46,6 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
         errorView.isUserInteractionEnabled = true
         
         errorView.onHide = { [weak self] in
-            print("ErrorView onHide triggered")
             self?.tableView.beginUpdates()
             self?.tableView.sizeTableHeaderFit()
             self?.tableView.endUpdates()
