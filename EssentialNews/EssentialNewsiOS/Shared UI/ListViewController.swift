@@ -12,6 +12,7 @@ import EssentialNews
 public final class ListViewController: UITableViewController, UITableViewDataSourcePrefetching {
     // MARK: Properties
     public var onRefresh: (() -> Void)?
+    private var onViewDidAppear: ((ListViewController) -> Void)?
     private(set) public var errorView = ErrorView()
     
     private lazy var dataSource: UITableViewDiffableDataSource<Int, CellController> = {
@@ -28,11 +29,22 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
         createRefreshControl()
         configureErrorView()
         refresh()
+        
+        onViewDidAppear = { vc in
+            vc.onViewDidAppear = nil
+            vc.refresh()
+        }
     }
     
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.sizeTableHeaderFit()
+    }
+    
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        onViewDidAppear?(self)
     }
     
     // MARK: Helper Methods
