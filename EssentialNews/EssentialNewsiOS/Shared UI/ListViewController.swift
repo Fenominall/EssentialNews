@@ -23,6 +23,7 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
     // MARK: Lifecycle
     public override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.prefersLargeTitles = true
         configureTableView()
         createRefreshControl()
         configureErrorView()
