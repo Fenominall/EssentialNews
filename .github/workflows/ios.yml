@@ -39,7 +39,7 @@ jobs:
       run: sudo xcode-select -s /Applications/Xcode_14.2.app # Adjust Xcode version if necessary
 
     - name: Build and test
-      run: xcodebuild clean build test -workspace EssentialApp.xcworkspace -scheme EssentialNews -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.2' -testPlan EssentialNewsTests
+      run: xcodebuild clean build test -workspace EssentialNews/EssentialApp.xcworkspace -scheme EssentialNews -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.2' -testPlan EssentialNews/EssentialNewsTests.xctestplan
       env:
         API_KEY: ${{ secrets.API_KEY }}
       working-directory: EssentialNews
