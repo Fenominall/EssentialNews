@@ -26,9 +26,8 @@ public final class RemoteFeedLoader: FeedLoader {
         case invalidData
     }
     
-    
     public func load(completion: @escaping (LoadResult) -> Void) {
-        client.get(from: url) { [weak self] result in
+        _ = client.get(from: url) { [weak self] result in
             guard self != nil else { return }
             
             do {
