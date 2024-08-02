@@ -44,6 +44,7 @@ public final class FeedArticleViewCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 15
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -103,10 +104,10 @@ public final class FeedArticleViewCell: UITableViewCell {
             containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
             containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
             
-            articlesImageContainer.widthAnchor.constraint(equalToConstant: 70),
-            articlesImageContainer.heightAnchor.constraint(equalToConstant: 70),
-            articleImageView.widthAnchor.constraint(equalToConstant: 70),
-            articleImageView.heightAnchor.constraint(equalToConstant: 70),
+            articlesImageContainer.widthAnchor.constraint(equalToConstant: 100),
+            articlesImageContainer.heightAnchor.constraint(equalToConstant: 100),
+            articleImageView.widthAnchor.constraint(equalToConstant: 100),
+            articleImageView.heightAnchor.constraint(equalToConstant: 100),
             articleImageView.centerXAnchor.constraint(equalTo: articlesImageContainer.centerXAnchor),
             articleImageView.centerYAnchor.constraint(equalTo: articlesImageContainer.centerYAnchor),
             
