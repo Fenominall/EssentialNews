@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F3173532C5E66330040DD90 /* ArticleDetailUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3173522C5E66330040DD90 /* ArticleDetailUIComposer.swift */; };
 		4F837B202C514E7900C455ED /* NullStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F837B1F2C514E7900C455ED /* NullStore.swift */; };
 		4F837B222C52A75400C455ED /* FeedLoaderWithFallbackCompositeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F837B212C52A75400C455ED /* FeedLoaderWithFallbackCompositeTests.swift */; };
 		4F837B242C52B01B00C455ED /* FeedLoaderWithFallbackComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F837B232C52B01B00C455ED /* FeedLoaderWithFallbackComposite.swift */; };
@@ -64,6 +65,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4F3173522C5E66330040DD90 /* ArticleDetailUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailUIComposer.swift; sourceTree = "<group>"; };
 		4F837B1F2C514E7900C455ED /* NullStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullStore.swift; sourceTree = "<group>"; };
 		4F837B212C52A75400C455ED /* FeedLoaderWithFallbackCompositeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoaderWithFallbackCompositeTests.swift; sourceTree = "<group>"; };
 		4F837B232C52B01B00C455ED /* FeedLoaderWithFallbackComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoaderWithFallbackComposite.swift; sourceTree = "<group>"; };
@@ -116,6 +118,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F3173512C5E66190040DD90 /* Article Detail UI Composer */ = {
+			isa = PBXGroup;
+			children = (
+				4F3173522C5E66330040DD90 /* ArticleDetailUIComposer.swift */,
+			);
+			path = "Article Detail UI Composer";
+			sourceTree = "<group>";
+		};
 		4F837B292C52E3DD00C455ED /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +181,7 @@
 		4FAD60D52C4EE1A500094765 /* EssentialNewsApp */ = {
 			isa = PBXGroup;
 			children = (
+				4F3173512C5E66190040DD90 /* Article Detail UI Composer */,
 				4FAAF75E2C514AED005E6918 /* Shared Helpers */,
 				4FAAF75D2C514AE3005E6918 /* Feed UI Composer */,
 				4FAD60D62C4EE1A500094765 /* AppDelegate.swift */,
@@ -317,6 +328,7 @@
 				4FF2B0852C4EE5F3003F543B /* FeedUIComposer.swift in Sources */,
 				4F837B202C514E7900C455ED /* NullStore.swift in Sources */,
 				4FAAF75A2C514A85005E6918 /* FeedImageDataLoaderPresentationAdapter.swift in Sources */,
+				4F3173532C5E66330040DD90 /* ArticleDetailUIComposer.swift in Sources */,
 				4FF2B0872C4F8FD0003F543B /* WeakRefVirtualProxy.swift in Sources */,
 				4FAD60D72C4EE1A500094765 /* AppDelegate.swift in Sources */,
 				4F837B3E2C54313100C455ED /* FeedImageDataLoaderCacheDecorator.swift in Sources */,
