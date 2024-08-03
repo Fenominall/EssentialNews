@@ -58,7 +58,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     fallback: FeedImageDataLoaderCacheDecorator(
                         decoratee: remoteImageLoader,
                         cache: localFeedImageDataLoader)),
-                selection: { _ in }
+                selection: { _ in },
+                receivedData: { _ in }
             )
     )
     

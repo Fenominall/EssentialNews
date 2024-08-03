@@ -13,6 +13,7 @@ final class FeedViewAdapter: ResourceView {
     private weak var controller: ListViewController?
     private let imageLoader: FeedImageDataLoader
     private let selection: (Article) -> Void
+    private let receivedData: (Data) -> Void
     private var currentFeed: [String: CellController]
     
     private typealias ImageDataPresentationAdapter = FeedImageDataLoaderPresentationAdapter<Data, WeakRefVirtualProxy<FeedArticleCellController>>
@@ -21,12 +22,14 @@ final class FeedViewAdapter: ResourceView {
         currentFeed: [String: CellController] = [:],
         controller: ListViewController,
         imageLoader: FeedImageDataLoader,
-        selection: @escaping (Article) -> Void
+        selection: @escaping (Article) -> Void,
+        receivedData: @escaping (Data) -> Void
     ) {
         self.currentFeed = currentFeed
         self.controller = controller
         self.imageLoader = imageLoader
         self.selection = selection
+        self.receivedData = receivedData
     }
     
     func display(_ viewModel: FeedViewModel) {
@@ -41,7 +44,8 @@ final class FeedViewAdapter: ResourceView {
             
             let adapter = ImageDataPresentationAdapter(
                 model: model,
-                imageLoader: MainQueueDispatchDecorator(decoratee: imageLoader)
+                imageLoader: MainQueueDispatchDecorator(decoratee: imageLoader),
+                receivedData: receivedData
             )
             
             let view = FeedArticleCellController(

@@ -14,7 +14,12 @@ final class FeedUIComposer {
     
     private typealias FeedPresentationAdapter = FeedLoaderPresentationAdapter<[Article], FeedViewAdapter>
     
-    static func feedComposedWith(feedLoader: FeedLoader, imageLoader: FeedImageDataLoader, selection: @escaping (Article) -> Void) -> ListViewController {
+    static func feedComposedWith(
+        feedLoader: FeedLoader,
+        imageLoader: FeedImageDataLoader,
+        selection: @escaping (Article) -> Void,
+        receivedData: @escaping (Data) -> Void
+    ) -> ListViewController {
         let presentationAdapter = FeedPresentationAdapter(loader: MainQueueDispatchDecorator(decoratee: feedLoader))
         let feedViewController = ListViewController()
         feedViewController.title = "Daily News"
@@ -24,7 +29,8 @@ final class FeedUIComposer {
             resourceView: FeedViewAdapter(
                 controller: feedViewController,
                 imageLoader: imageLoader,
-                selection: selection
+                selection: selection,
+                receivedData: receivedData
             ),
             loadingView: WeakRefVirtualProxy(feedViewController),
             errorView: WeakRefVirtualProxy(feedViewController),
