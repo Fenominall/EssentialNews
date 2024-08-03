@@ -12,19 +12,16 @@ final class FeedImageDataLoaderPresentationAdapter<Resource, View: ResourceView>
     private let model: Article
     private let imageLoader: FeedImageDataLoader
     private var task: FeedImageDataLoaderTask?
-    private let receivedData: (Data) -> Void
     private var isLoading = false
     
     var presenter: LoadResourcePresenter<Data, View>?
     
     init(
         model: Article,
-        imageLoader: FeedImageDataLoader,
-        receivedData: @escaping (Data) -> Void
+        imageLoader: FeedImageDataLoader
     ) {
         self.model = model
         self.imageLoader = imageLoader
-        self.receivedData = receivedData
     }
     
     func didRequestImage() {
@@ -42,7 +39,6 @@ final class FeedImageDataLoaderPresentationAdapter<Resource, View: ResourceView>
             guard let self = self else { return }
             switch result {
             case let .success(data):
-                self.receivedData(data)
                 self.presenter?.didFinishLoading(with: data)
             case let .failure(error):
                 self.presenter?.didFinishLoading(with: error)

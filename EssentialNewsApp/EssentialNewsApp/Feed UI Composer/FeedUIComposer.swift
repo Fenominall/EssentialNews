@@ -17,8 +17,7 @@ final class FeedUIComposer {
     static func feedComposedWith(
         feedLoader: FeedLoader,
         imageLoader: FeedImageDataLoader,
-        selection: @escaping (Article) -> Void,
-        receivedData: @escaping (Data) -> Void
+        selection: @escaping (Article) -> Void
     ) -> ListViewController {
         let presentationAdapter = FeedPresentationAdapter(loader: MainQueueDispatchDecorator(decoratee: feedLoader))
         let feedViewController = ListViewController()
@@ -29,8 +28,7 @@ final class FeedUIComposer {
             resourceView: FeedViewAdapter(
                 controller: feedViewController,
                 imageLoader: imageLoader,
-                selection: selection,
-                receivedData: receivedData
+                selection: selection
             ),
             loadingView: WeakRefVirtualProxy(feedViewController),
             errorView: WeakRefVirtualProxy(feedViewController),
