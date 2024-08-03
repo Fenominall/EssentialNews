@@ -14,7 +14,7 @@ import CoreData
 class ManagedArticle: NSManagedObject {
     @NSManaged var author: String?
     @NSManaged var title: String
-    @NSManaged var desscription: String?
+    @NSManaged var descriptionText: String?
     @NSManaged var url: URL
     @NSManaged var urlToImage: URL?
     @NSManaged var publishedAt: Date
@@ -70,7 +70,7 @@ extension ManagedArticle {
             managed.source = source
             managed.author = local.author
             managed.title = local.title
-            managed.desscription = local.description
+            managed.descriptionText = local.description
             managed.url = local.url
             managed.urlToImage = local.urlToImage
             managed.publishedAt = local.publishedAt

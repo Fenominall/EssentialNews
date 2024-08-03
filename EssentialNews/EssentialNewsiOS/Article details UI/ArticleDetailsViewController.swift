@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-public final class FeedArticleDetailsViewController: UIViewController {
+public final class ArticleDetailsViewController: UIViewController {
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -137,9 +137,7 @@ public final class FeedArticleDetailsViewController: UIViewController {
     }
     
     @objc private func handleRefresh() {
-        // Add your refresh logic here
-        
-        // Example: simulate network delay and end refreshing after 2 seconds
+        // TODO
         DispatchQueue.main.async {
             self.refreshControl.endRefreshing()
         }
