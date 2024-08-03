@@ -76,4 +76,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillResignActive(_ scene: UIScene) {
         localFeedLoader.validateCache { _ in  }
     }
+    
+    // MARK: - Helpers
+    private func showArticleDetail(for article: Article) {
+        let articleDetails = ArticleDetailsUIComposer
+            .articleDetailsComposedWith(
+                feedLoader: remoteFeedLoader,
+                imageLoader: remoteImageLoader,
+                selection: article
+            )
+        navigationController.pushViewController(articleDetails, animated: true)
+    }
 }
