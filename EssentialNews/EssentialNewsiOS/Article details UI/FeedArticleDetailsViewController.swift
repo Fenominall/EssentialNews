@@ -58,7 +58,7 @@ public final class FeedArticleDetailsViewController: UIViewController {
         return label
     }()
     
-    private lazy var bodyUILabel: UILabel = {
+    lazy var contentLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.preferredFont(forTextStyle: .body)
@@ -88,7 +88,7 @@ public final class FeedArticleDetailsViewController: UIViewController {
         contentView.addSubview(titleUILabel)
         contentView.addSubview(descriptionLabel)
         contentView.addSubview(authorAndDateUILabel)
-        contentView.addSubview(bodyUILabel)
+        contentView.addSubview(contentLabel)
         
         NSLayoutConstraint.activate([
             // ScrollView constraints
@@ -125,10 +125,10 @@ public final class FeedArticleDetailsViewController: UIViewController {
             articleImage.heightAnchor.constraint(equalToConstant: 300),
             
             // BodyUILabel constraints
-            bodyUILabel.topAnchor.constraint(equalTo: articleImage.bottomAnchor, constant: 40),
-            bodyUILabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            bodyUILabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            bodyUILabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
+            contentLabel.topAnchor.constraint(equalTo: articleImage.bottomAnchor, constant: 40),
+            contentLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            contentLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            contentLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
         ])
     }
     
