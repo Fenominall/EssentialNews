@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-public final class ArticleDetailsViewController: UIViewController {
+public final class FeedArticleDetailsViewController: UIViewController {
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
