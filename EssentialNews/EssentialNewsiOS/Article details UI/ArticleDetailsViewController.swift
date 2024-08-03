@@ -67,9 +67,18 @@ public final class ArticleDetailsViewController: UIViewController {
         return label
     }()
     
+    
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = .systemBackground
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        return refreshControl
+    }()
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupRefreshControl()
     }
     
     private func setupUI() {
@@ -121,5 +130,18 @@ public final class ArticleDetailsViewController: UIViewController {
             bodyUILabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             bodyUILabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
         ])
+    }
+    
+    private func setupRefreshControl() {
+        scrollView.refreshControl = refreshControl
+    }
+    
+    @objc private func handleRefresh() {
+        // Add your refresh logic here
+        
+        // Example: simulate network delay and end refreshing after 2 seconds
+        DispatchQueue.main.async {
+            self.refreshControl.endRefreshing()
+        }
     }
 }
