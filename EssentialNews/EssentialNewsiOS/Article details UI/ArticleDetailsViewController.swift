@@ -31,11 +31,11 @@ public final class ArticleDetailsViewController: UIViewController {
         return imageView
     }()
     
-    private lazy var titleUILabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.preferredFont(forTextStyle: .largeTitle)
-        label.textColor = .systemBackground
+        label.textColor = .label
         label.numberOfLines = 0
         return label
     }()
@@ -49,28 +49,45 @@ public final class ArticleDetailsViewController: UIViewController {
         return label
     }()
     
-    private lazy var authorAndDateUILabel: UILabel = {
+    private lazy var authorLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.preferredFont(forTextStyle: .caption1)
-        label.textColor = .systemBackground
+        label.textColor = .label
         label.numberOfLines = 0
         return label
+    }()
+    
+    private lazy var publishedDateLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.preferredFont(forTextStyle: .caption1)
+        label.textColor = .systemGray
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private lazy var authorAndDateStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [
+            authorLabel, publishedDateLabel
+        ])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .horizontal
+        stack.contentMode = .left
+        stack.distribution = .equalCentering
+        return stack
     }()
     
     lazy var contentLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.preferredFont(forTextStyle: .body)
-        label.textColor = .systemBackground
+        label.textColor = .label
         label.numberOfLines = 0
         return label
     }()
     
-    
     private lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
-        refreshControl.tintColor = .systemBackground
+        refreshControl.tintColor = .label
         refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         return refreshControl
     }()
@@ -82,12 +99,16 @@ public final class ArticleDetailsViewController: UIViewController {
     }
     
     private func setupUI() {
+        view.backgroundColor = .systemBackground
+        
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(articleImage)
-        contentView.addSubview(titleUILabel)
+        contentView.addSubview(titleLabel)
         contentView.addSubview(descriptionLabel)
-        contentView.addSubview(authorAndDateUILabel)
+        contentView.addSubview(authorLabel)
+        contentView.addSubview(publishedDateLabel)
+        contentView.addSubview(authorAndDateStackView)
         contentView.addSubview(contentLabel)
         
         NSLayoutConstraint.activate([
@@ -105,24 +126,24 @@ public final class ArticleDetailsViewController: UIViewController {
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             
             // TitleUILabel constraints
-            titleUILabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 25),
-            titleUILabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
-            titleUILabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
             
-            descriptionLabel.topAnchor.constraint(equalTo: titleUILabel.bottomAnchor, constant: 25),
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 25),
             descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
             descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
             
             // AuthorAndDateUILabel constraints
-            authorAndDateUILabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20),
-            authorAndDateUILabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
-            authorAndDateUILabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
-            
+            authorAndDateStackView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20),
+            authorAndDateStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
+            authorAndDateStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
+                        
             // ArticleImage constraints
-            articleImage.topAnchor.constraint(equalTo: authorAndDateUILabel.bottomAnchor, constant: 20),
+            articleImage.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 20),
             articleImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
             articleImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
-            articleImage.heightAnchor.constraint(equalToConstant: 300),
+            articleImage.heightAnchor.constraint(equalToConstant: articleImage.image != nil ? 300 : 0),
             
             // BodyUILabel constraints
             contentLabel.topAnchor.constraint(equalTo: articleImage.bottomAnchor, constant: 40),
@@ -143,10 +164,11 @@ public final class ArticleDetailsViewController: UIViewController {
         }
     }
     
-    func bind(_ viewModel: FeedArticleDetailsViewModel) {
-        titleUILabel.text = viewModel.title
+    public func bind(_ viewModel: FeedArticleDetailsViewModel) {
+        titleLabel.text = viewModel.title
         descriptionLabel.text = viewModel.title
-        authorAndDateUILabel.text = "\(viewModel.author) \(viewModel.publishedDate)"
+        authorLabel.text = viewModel.author
+        publishedDateLabel.text = viewModel.publishedDate
         contentLabel.text = viewModel.content
     }
 }
