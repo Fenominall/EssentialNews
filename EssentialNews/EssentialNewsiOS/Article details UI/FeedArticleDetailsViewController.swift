@@ -144,4 +144,11 @@ public final class FeedArticleDetailsViewController: UIViewController {
             self.refreshControl.endRefreshing()
         }
     }
+    
+    func bind(_ viewModel: FeedArticleDetailsViewModel) {
+        titleUILabel.text = viewModel.title
+        descriptionLabel.text = viewModel.title
+        authorAndDateUILabel.text = "\(viewModel.author) \(viewModel.publishedDate)"
+        contentLabel.text = viewModel.content
+    }
 }
