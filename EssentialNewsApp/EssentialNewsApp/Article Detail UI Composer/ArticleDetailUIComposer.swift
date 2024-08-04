@@ -7,17 +7,37 @@
 
 import EssentialNews
 import EssentialNewsiOS
+import UIKit
 
 public final class ArticleDetailsUIComposer {
     private init() {}
+    
+    private typealias ImageDataPresentationAdapter = ImageDataLoaderPresentationAdapter<Data, WeakRefVirtualProxy<ArticleDetailsViewController>>
     
     static func articleDetailsComposedWith(
         feedLoader: FeedLoader,
         imageLoader: FeedImageDataLoader,
         selection: Article
     ) -> ArticleDetailsViewController {
-        let articleDetailVC = ArticleDetailsViewController()
-        articleDetailVC.bind(FeedArticleDetailsViewModel(viewModel: ArticleDetailPresenter.map(selection, Data())))
+        let imageAdapter = ImageDataPresentationAdapter(model: selection, imageLoader: imageLoader)
+        let viewModel = FeedArticleDetailsViewModel(viewModel: ArticleDetailPresenter.map(selection))
+        let articleDetailVC = ArticleDetailsViewController(delegate: imageAdapter, viewModel: viewModel)
+                
+        imageAdapter.presenter = LoadResourcePresenter(
+            resourceView: WeakRefVirtualProxy(articleDetailVC),
+            loadingView: WeakRefVirtualProxy(viewModel),
+            errorView: WeakRefVirtualProxy(viewModel),
+            mapper: mapDataIntoImage
+        )
         return articleDetailVC
     }
+    
+    private static func mapDataIntoImage(_ data: Data) throws -> UIImage {
+        guard let image = UIImage(data: data) else {
+            throw InvalidImageDataError()
+        }
+        return image
+    }
 }
+
+private class InvalidImageDataError: Error {}
