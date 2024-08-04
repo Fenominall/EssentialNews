@@ -143,9 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				4FF2B0842C4EE5F3003F543B /* FeedUIComposer.swift */,
-				4FAAF7572C514A5F005E6918 /* LoaderPresentationAdapter.swift */,
 				4FAAF75B2C514ACA005E6918 /* FeedViewAdapter.swift */,
-				4FAAF7592C514A85005E6918 /* ImageDataLoaderPresentationAdapter.swift */,
 			);
 			path = "Feed UI Composer";
 			sourceTree = "<group>";
@@ -155,6 +153,9 @@
 			children = (
 				4FF2B0882C501936003F543B /* MainQueueDispatchDecorator.swift */,
 				4FF2B0862C4F8FD0003F543B /* WeakRefVirtualProxy.swift */,
+				4FAAF7572C514A5F005E6918 /* LoaderPresentationAdapter.swift */,
+				4FAAF7592C514A85005E6918 /* ImageDataLoaderPresentationAdapter.swift */,
+				4F837B1F2C514E7900C455ED /* NullStore.swift */,
 			);
 			path = "Shared Helpers";
 			sourceTree = "<group>";
@@ -186,7 +187,6 @@
 				4F3173512C5E66190040DD90 /* Article Detail UI Composer */,
 				4FAD60D62C4EE1A500094765 /* AppDelegate.swift */,
 				4FAD60D82C4EE1A500094765 /* SceneDelegate.swift */,
-				4F837B1F2C514E7900C455ED /* NullStore.swift */,
 				4F837B232C52B01B00C455ED /* FeedLoaderWithFallbackComposite.swift */,
 				4F837B272C52E31900C455ED /* FeedImageDataLoaderWithFallbackComposite.swift */,
 				4F837B352C52EF0300C455ED /* FeedLoaderCacheDecorator.swift */,
