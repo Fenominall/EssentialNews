@@ -177,10 +177,10 @@ Given the customer doesn't have connectivity
 ### Cache Feed Use Case
 
 #### Data:
-- Articles Feed
+- Articles
 
 #### Primary course (happy path):
-1. Execute "Save Articles Feed" command with above data.
+1. Execute "Save Articles" command with above data.
 2. System deletes old cache data.
 3. System encodes articles feed.
 4. System timestamps the new cache.
