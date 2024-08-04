@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct ArticleDetailViewModel {
+public struct ArticleDetailsViewModel {
     public let source: Source
     public let author: String?
     public let title: String

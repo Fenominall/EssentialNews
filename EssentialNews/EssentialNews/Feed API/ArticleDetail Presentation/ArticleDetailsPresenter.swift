@@ -7,9 +7,9 @@
 
 import Foundation
 
-public final class ArticleDetailPresenter {
-    public static func map(_ article: Article) -> ArticleDetailViewModel {
-        ArticleDetailViewModel(
+public final class ArticleDetailsPresenter {
+    public static func map(_ article: Article) -> ArticleDetailsViewModel {
+        ArticleDetailsViewModel(
             source: article.source,
             author: article.author,
             title: article.title,

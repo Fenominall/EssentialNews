@@ -7,11 +7,11 @@
 
 import EssentialNews
 
-public class FeedArticleDetailsViewModel {
-    private let viewModel: ArticleDetailViewModel
+public class ArticleDetailsPresentationViewModel {
+    private let viewModel: ArticleDetailsViewModel
     var isLoading: ((Bool) -> Void)?
     
-    public init(viewModel: ArticleDetailViewModel) {
+    public init(viewModel: ArticleDetailsViewModel) {
         self.viewModel = viewModel
     }
     
@@ -37,13 +37,13 @@ public class FeedArticleDetailsViewModel {
 }
 
 
-extension FeedArticleDetailsViewModel: ResourceLoadingView {
+extension ArticleDetailsPresentationViewModel: ResourceLoadingView {
     public func display(_ viewModel: ResourceLoadingViewModel) {
         isLoading?(viewModel.isLoading)
     }
 }
 
-extension FeedArticleDetailsViewModel: ResourceErrorView {
+extension ArticleDetailsPresentationViewModel: ResourceErrorView {
     public func display(_ viewModel: ResourceErrorViewModel) {
         
     }

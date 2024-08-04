@@ -20,7 +20,7 @@ public final class ArticleDetailsUIComposer {
         selection: Article
     ) -> ArticleDetailsViewController {
         let imageAdapter = ImageDataPresentationAdapter(model: selection, imageLoader: imageLoader)
-        let viewModel = FeedArticleDetailsViewModel(viewModel: ArticleDetailPresenter.map(selection))
+        let viewModel = ArticleDetailsPresentationViewModel(viewModel: ArticleDetailsPresenter.map(selection))
         let articleDetailVC = ArticleDetailsViewController(delegate: imageAdapter, viewModel: viewModel)
                 
         imageAdapter.presenter = LoadResourcePresenter(
