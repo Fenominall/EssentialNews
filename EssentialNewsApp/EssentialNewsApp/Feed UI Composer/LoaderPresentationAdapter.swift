@@ -8,7 +8,7 @@
 import EssentialNews
 import EssentialNewsiOS
 
-final class FeedLoaderPresentationAdapter<Resource, View: ResourceView> {
+final class LoaderPresentationAdapter<Resource, View: ResourceView> {
     private let loader: FeedLoader
     var presenter: LoadResourcePresenter<[Article], View>?
     private var isLoading = false

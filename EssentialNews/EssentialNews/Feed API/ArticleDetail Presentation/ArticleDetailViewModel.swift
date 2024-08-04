@@ -12,7 +12,6 @@ public struct ArticleDetailViewModel {
     public let author: String?
     public let title: String
     public let description: String?
-    public let imageData: Data?
     public let publishedAt: Date
     public let content: String?
     
@@ -21,7 +20,6 @@ public struct ArticleDetailViewModel {
         author: String?,
         title: String,
         description: String?,
-        imageData: Data?,
         publishedAt: Date,
         content: String?
     ) {
@@ -29,7 +27,6 @@ public struct ArticleDetailViewModel {
         self.author = author
         self.title = title
         self.description = description
-        self.imageData = imageData
         self.publishedAt = publishedAt
         self.content = content
     }
