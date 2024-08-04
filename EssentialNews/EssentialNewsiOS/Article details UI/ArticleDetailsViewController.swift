@@ -56,6 +56,15 @@ public final class ArticleDetailsViewController: UIViewController {
         return label
     }()
     
+    private lazy var sourceLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.preferredFont(forTextStyle: .caption1)
+        label.textColor = .systemGray
+        label.numberOfLines = 0
+        return label
+    }()
+    
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -132,6 +141,7 @@ public final class ArticleDetailsViewController: UIViewController {
         scrollView.addSubview(contentView)
         contentView.addSubview(articleImage)
         contentView.addSubview(titleLabel)
+        contentView.addSubview(sourceLabel)
         contentView.addSubview(descriptionLabel)
         contentView.addSubview(authorLabel)
         contentView.addSubview(publishedDateLabel)
@@ -171,10 +181,15 @@ public final class ArticleDetailsViewController: UIViewController {
             articleImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
             articleImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
             
+            // TitleUILabel constraints
+            sourceLabel.topAnchor.constraint(equalTo: articleImage.bottomAnchor, constant: 10),
+            sourceLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
+            sourceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
+            
             // BodyUILabel constraints
-            contentLabel.topAnchor.constraint(equalTo: articleImage.bottomAnchor, constant: 40),
-            contentLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            contentLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            contentLabel.topAnchor.constraint(equalTo: sourceLabel.bottomAnchor, constant: 20),
+            contentLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
+            contentLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
             contentLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
         ])
     }
@@ -198,6 +213,7 @@ public final class ArticleDetailsViewController: UIViewController {
         descriptionLabel.text = viewModel.description
         authorLabel.text = viewModel.author
         publishedDateLabel.text = viewModel.publishedDate
+        sourceLabel.text = viewModel.sourceName
         contentLabel.text = viewModel.content
     }
 }

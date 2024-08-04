@@ -19,6 +19,10 @@ public class ArticleDetailsPresentationViewModel {
         viewModel.author ?? ""
     }
     
+    var sourceName: String {
+        "From: \(viewModel.source.name)"
+    }
+    
     var title: String {
         viewModel.title
     }
