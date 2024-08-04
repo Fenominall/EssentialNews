@@ -28,6 +28,7 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
         configureTableView()
         createRefreshControl()
         configureErrorView()
+        setDarkModeSupportForTheBackButton()
         refresh()
         
         onViewDidAppear = { vc in
@@ -48,6 +49,13 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
     }
     
     // MARK: Helper Methods
+    private func setDarkModeSupportForTheBackButton() {
+        let backButton = UIBarButtonItem()
+        backButton.title = title
+        backButton.tintColor = .label
+        navigationItem.backBarButtonItem = backButton
+    }
+    
     private func configureTableView() {
         tableView.register(FeedArticleViewCell.self, forCellReuseIdentifier: String(describing: FeedArticleViewCell.self))
         dataSource.defaultRowAnimation = .fade
