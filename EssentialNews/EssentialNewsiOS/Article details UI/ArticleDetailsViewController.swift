@@ -11,10 +11,10 @@ import EssentialNews
 
 public final class ArticleDetailsViewController: UIViewController {
     private let delegate: FeedArticlesCellControllerDelegate
-    private let viewModel: FeedArticleDetailsViewModel
-        
+    private let viewModel: ArticleDetailsPresentationViewModel
+    
     public init(delegate: FeedArticlesCellControllerDelegate,
-                viewModel: FeedArticleDetailsViewModel
+                viewModel: ArticleDetailsPresentationViewModel
     ) {
         self.delegate = delegate
         self.viewModel = viewModel
@@ -185,9 +185,7 @@ public final class ArticleDetailsViewController: UIViewController {
     
     private func updateRefreshControl() {
         viewModel.isLoading = { [weak self] isLoading in
-            DispatchQueue.main.async {
-                self?.refreshControl.update(isRefreshing: isLoading)
-            }
+            self?.refreshControl.update(isRefreshing: isLoading)
         }
     }
     
@@ -206,13 +204,9 @@ public final class ArticleDetailsViewController: UIViewController {
 
 extension ArticleDetailsViewController: ResourceView {
     public func display(_ viewModel: UIImage) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            
-            self.articleImage.image = viewModel
-            
-           setImageHeightAndLayout()
-        }
+        articleImage.image = viewModel
+        
+        setImageHeightAndLayout()
     }
     
     private func setImageHeightAndLayout() {

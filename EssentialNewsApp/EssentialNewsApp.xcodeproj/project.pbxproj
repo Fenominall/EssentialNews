@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F119E2F2C5F687900C51E66 /* Data+mapDataIntoUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F119E2E2C5F687900C51E66 /* Data+mapDataIntoUIImage.swift */; };
 		4F3173532C5E66330040DD90 /* ArticleDetailUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3173522C5E66330040DD90 /* ArticleDetailUIComposer.swift */; };
 		4F837B202C514E7900C455ED /* NullStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F837B1F2C514E7900C455ED /* NullStore.swift */; };
 		4F837B222C52A75400C455ED /* FeedLoaderWithFallbackCompositeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F837B212C52A75400C455ED /* FeedLoaderWithFallbackCompositeTests.swift */; };
@@ -65,6 +66,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4F119E2E2C5F687900C51E66 /* Data+mapDataIntoUIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+mapDataIntoUIImage.swift"; sourceTree = "<group>"; };
 		4F3173522C5E66330040DD90 /* ArticleDetailUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailUIComposer.swift; sourceTree = "<group>"; };
 		4F837B1F2C514E7900C455ED /* NullStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullStore.swift; sourceTree = "<group>"; };
 		4F837B212C52A75400C455ED /* FeedLoaderWithFallbackCompositeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoaderWithFallbackCompositeTests.swift; sourceTree = "<group>"; };
@@ -143,9 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				4FF2B0842C4EE5F3003F543B /* FeedUIComposer.swift */,
-				4FAAF7572C514A5F005E6918 /* LoaderPresentationAdapter.swift */,
 				4FAAF75B2C514ACA005E6918 /* FeedViewAdapter.swift */,
-				4FAAF7592C514A85005E6918 /* ImageDataLoaderPresentationAdapter.swift */,
 			);
 			path = "Feed UI Composer";
 			sourceTree = "<group>";
@@ -155,6 +155,10 @@
 			children = (
 				4FF2B0882C501936003F543B /* MainQueueDispatchDecorator.swift */,
 				4FF2B0862C4F8FD0003F543B /* WeakRefVirtualProxy.swift */,
+				4FAAF7572C514A5F005E6918 /* LoaderPresentationAdapter.swift */,
+				4FAAF7592C514A85005E6918 /* ImageDataLoaderPresentationAdapter.swift */,
+				4F837B1F2C514E7900C455ED /* NullStore.swift */,
+				4F119E2E2C5F687900C51E66 /* Data+mapDataIntoUIImage.swift */,
 			);
 			path = "Shared Helpers";
 			sourceTree = "<group>";
@@ -186,7 +190,6 @@
 				4F3173512C5E66190040DD90 /* Article Detail UI Composer */,
 				4FAD60D62C4EE1A500094765 /* AppDelegate.swift */,
 				4FAD60D82C4EE1A500094765 /* SceneDelegate.swift */,
-				4F837B1F2C514E7900C455ED /* NullStore.swift */,
 				4F837B232C52B01B00C455ED /* FeedLoaderWithFallbackComposite.swift */,
 				4F837B272C52E31900C455ED /* FeedImageDataLoaderWithFallbackComposite.swift */,
 				4F837B352C52EF0300C455ED /* FeedLoaderCacheDecorator.swift */,
@@ -324,6 +327,7 @@
 				4FAAF75C2C514ACA005E6918 /* FeedViewAdapter.swift in Sources */,
 				4FAAF7582C514A5F005E6918 /* LoaderPresentationAdapter.swift in Sources */,
 				4F837B242C52B01B00C455ED /* FeedLoaderWithFallbackComposite.swift in Sources */,
+				4F119E2F2C5F687900C51E66 /* Data+mapDataIntoUIImage.swift in Sources */,
 				4F837B362C52EF0300C455ED /* FeedLoaderCacheDecorator.swift in Sources */,
 				4FF2B0852C4EE5F3003F543B /* FeedUIComposer.swift in Sources */,
 				4F837B202C514E7900C455ED /* NullStore.swift in Sources */,

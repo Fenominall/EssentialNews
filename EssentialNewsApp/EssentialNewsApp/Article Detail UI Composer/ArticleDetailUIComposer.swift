@@ -19,8 +19,8 @@ public final class ArticleDetailsUIComposer {
         imageLoader: FeedImageDataLoader,
         selection: Article
     ) -> ArticleDetailsViewController {
-        let imageAdapter = ImageDataPresentationAdapter(model: selection, imageLoader: imageLoader)
-        let viewModel = FeedArticleDetailsViewModel(viewModel: ArticleDetailPresenter.map(selection))
+        let imageAdapter = ImageDataPresentationAdapter(model: selection, imageLoader: MainQueueDispatchDecorator(decoratee: imageLoader))
+        let viewModel = ArticleDetailsPresentationViewModel(viewModel: ArticleDetailsPresenter.map(selection))
         let articleDetailVC = ArticleDetailsViewController(delegate: imageAdapter, viewModel: viewModel)
                 
         imageAdapter.presenter = LoadResourcePresenter(
@@ -31,13 +31,4 @@ public final class ArticleDetailsUIComposer {
         )
         return articleDetailVC
     }
-    
-    private static func mapDataIntoImage(_ data: Data) throws -> UIImage {
-        guard let image = UIImage(data: data) else {
-            throw InvalidImageDataError()
-        }
-        return image
-    }
 }
-
-private class InvalidImageDataError: Error {}
