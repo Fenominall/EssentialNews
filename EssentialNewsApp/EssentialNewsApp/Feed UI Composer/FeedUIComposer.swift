@@ -12,7 +12,7 @@ import EssentialNewsiOS
 final class FeedUIComposer {
     private init() {}
     
-    private typealias FeedPresentationAdapter = FeedLoaderPresentationAdapter<[Article], FeedViewAdapter>
+    private typealias FeedPresentationAdapter = LoaderPresentationAdapter<[Article], FeedViewAdapter>
     
     static func feedComposedWith(
         feedLoader: FeedLoader,

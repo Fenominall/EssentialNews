@@ -15,7 +15,7 @@ final class FeedViewAdapter: ResourceView {
     private let selection: (Article) -> Void
     private var currentFeed: [String: CellController]
     
-    private typealias ImageDataPresentationAdapter = FeedImageDataLoaderPresentationAdapter<Data, WeakRefVirtualProxy<FeedArticleCellController>>
+    private typealias ImageDataPresentationAdapter = ImageDataLoaderPresentationAdapter<Data, WeakRefVirtualProxy<FeedArticleCellController>>
     
     init(
         currentFeed: [String: CellController] = [:],
