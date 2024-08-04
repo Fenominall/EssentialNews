@@ -8,23 +8,18 @@
 import UIKit
 import EssentialNews
 
-public protocol FeedArticlesCellControllerDelegate {
-    func didRequestImage()
-    func didCancelImageRequest()
-}
-
 public final class FeedArticleCellController: NSObject {
     
     public typealias ResourceViewModel = UIImage
     
     private let viewModel: FeedArticleViewModel
-    private let delegate: FeedArticlesCellControllerDelegate
+    private let delegate: ImageRequestDelegate
     private let selection: () -> Void
     private var cell: FeedArticleViewCell?
     
     public init(
         viewModel: FeedArticleViewModel,
-        delegate: FeedArticlesCellControllerDelegate,
+        delegate: ImageRequestDelegate,
         selection: @escaping () -> Void
     ) {
         self.viewModel = viewModel

@@ -8,7 +8,7 @@
 import EssentialNews
 import EssentialNewsiOS
 
-final class ImageDataLoaderPresentationAdapter<Resource, View: ResourceView>: FeedArticlesCellControllerDelegate {
+final class ImageDataLoaderPresentationAdapter<Resource, View: ResourceView>: ImageRequestDelegate {
     private let model: Article
     private let imageLoader: FeedImageDataLoader
     private var task: FeedImageDataLoaderTask?

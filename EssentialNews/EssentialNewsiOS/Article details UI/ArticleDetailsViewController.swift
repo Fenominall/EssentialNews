@@ -10,10 +10,10 @@ import UIKit
 import EssentialNews
 
 public final class ArticleDetailsViewController: UIViewController {
-    private let delegate: FeedArticlesCellControllerDelegate
+    private let delegate: ImageRequestDelegate
     private let viewModel: ArticleDetailsPresentationViewModel
     
-    public init(delegate: FeedArticlesCellControllerDelegate,
+    public init(delegate: ImageRequestDelegate,
                 viewModel: ArticleDetailsPresentationViewModel
     ) {
         self.delegate = delegate
