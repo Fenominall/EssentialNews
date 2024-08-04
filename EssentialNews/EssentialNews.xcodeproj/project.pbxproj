@@ -251,12 +251,14 @@
 		4F2F214C2C388AE900C2BF4A /* EssentialNews */ = {
 			isa = PBXGroup;
 			children = (
+				4FE904322C4BFBE900A1B12A /* Shared Feed API */,
 				4F8199FC2C4E76DE00B88A4A /* Shared Presentation */,
 				4F3D10FA2C4069F900759FD9 /* FeedCache */,
 				4F27F4FA2C3A76F70048B926 /* Shared API */,
 				4FAF79882C39330B002A0695 /* Feed API */,
 				4F3B27D92C39294C00FA5962 /* Feed Feature */,
 				4F8199FB2C4E76C200B88A4A /* Feed Presentation */,
+				4F31734C2C5E33080040DD90 /* ArticleDetail Presentation */,
 				4F2F214D2C388AE900C2BF4A /* EssentialNews.h */,
 			);
 			path = EssentialNews;
@@ -512,8 +514,6 @@
 		4FAF79882C39330B002A0695 /* Feed API */ = {
 			isa = PBXGroup;
 			children = (
-				4F31734C2C5E33080040DD90 /* ArticleDetail Presentation */,
-				4FE904322C4BFBE900A1B12A /* Shared Feed API */,
 				4F27F4F72C3A75A30048B926 /* Helpers */,
 				4FAF798B2C39331C002A0695 /* RemoteFeedLoader.swift */,
 				4F292C1C2C3A9DB500DB77FE /* RemoteFeedImageDataLoader.swift */,
