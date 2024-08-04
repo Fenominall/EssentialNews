@@ -26,7 +26,7 @@ final class ImageDataLoaderPresentationAdapter<Resource, View: ResourceView>: Fe
     
     func didRequestImage() {
         guard !isLoading else { return }
-
+        
         presenter?.didStartLoading()
         isLoading = true
         
