@@ -31,13 +31,4 @@ public final class ArticleDetailsUIComposer {
         )
         return articleDetailVC
     }
-    
-    private static func mapDataIntoImage(_ data: Data) throws -> UIImage {
-        guard let image = UIImage(data: data) else {
-            throw InvalidImageDataError()
-        }
-        return image
-    }
 }
-
-private class InvalidImageDataError: Error {}
