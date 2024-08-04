@@ -15,6 +15,7 @@ public final class FeedArticleViewCell: UITableViewCell {
     private lazy var containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .systemBackground
         return view
     }()
     
@@ -23,6 +24,7 @@ public final class FeedArticleViewCell: UITableViewCell {
         label.numberOfLines = 0
         label.font = UIFont.preferredFont(forTextStyle: .headline)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .label
         return label
     }()
     
@@ -30,6 +32,7 @@ public final class FeedArticleViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .caption1)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .label
         return label
     }()
     
@@ -54,7 +57,7 @@ public final class FeedArticleViewCell: UITableViewCell {
         button.isHidden = true
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "arrow.clockwise"), for: .normal)
-        button.tintColor = .white
+        button.tintColor = .label
         let configuration = UIImage.SymbolConfiguration(pointSize: 40, weight: .regular)
         button.setPreferredSymbolConfiguration(configuration, forImageIn: .normal)
         button.addTarget(self, action: #selector(retryButtonTapped), for: .touchUpInside)
@@ -93,6 +96,7 @@ public final class FeedArticleViewCell: UITableViewCell {
     }
     
     private func configureCell() {
+        contentView.backgroundColor = .systemBackground
         contentView.addSubview(containerView)
         containerView.addSubview(horizontalStackView)
         containerView.addSubview(retryButton)

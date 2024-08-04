@@ -78,6 +78,7 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
     }
     
     func createRefreshControl() {
+        view.backgroundColor = .systemBackground
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
     }
