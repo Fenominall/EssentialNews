@@ -7,8 +7,9 @@
 
 import EssentialNews
 
-public struct FeedArticleDetailsViewModel {
+public class FeedArticleDetailsViewModel {
     private let viewModel: ArticleDetailViewModel
+    var isLoading: ((Bool) -> Void)?
     
     public init(viewModel: ArticleDetailViewModel) {
         self.viewModel = viewModel
@@ -34,3 +35,17 @@ public struct FeedArticleDetailsViewModel {
         viewModel.content ?? ""
     }
 }
+
+
+extension FeedArticleDetailsViewModel: ResourceLoadingView {
+    public func display(_ viewModel: ResourceLoadingViewModel) {
+        isLoading?(viewModel.isLoading)
+    }
+}
+
+extension FeedArticleDetailsViewModel: ResourceErrorView {
+    public func display(_ viewModel: ResourceErrorViewModel) {
+        
+    }
+}
+
