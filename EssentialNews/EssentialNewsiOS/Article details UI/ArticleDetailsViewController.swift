@@ -7,8 +7,24 @@
 
 import Foundation
 import UIKit
+import EssentialNews
 
 public final class ArticleDetailsViewController: UIViewController {
+    private let delegate: FeedArticlesCellControllerDelegate
+    private let viewModel: FeedArticleDetailsViewModel
+        
+    public init(delegate: FeedArticlesCellControllerDelegate,
+                viewModel: FeedArticleDetailsViewModel
+    ) {
+        self.delegate = delegate
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+        delegate.didRequestImage()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -96,6 +112,17 @@ public final class ArticleDetailsViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupRefreshControl()
+        populateReceivedData()
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateRefreshControl()
+    }
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        delegate.didCancelImageRequest()
     }
     
     private func setupUI() {
@@ -138,12 +165,11 @@ public final class ArticleDetailsViewController: UIViewController {
             authorAndDateStackView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20),
             authorAndDateStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
             authorAndDateStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
-                        
+            
             // ArticleImage constraints
-            articleImage.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 20),
+            articleImage.topAnchor.constraint(equalTo: authorAndDateStackView.bottomAnchor, constant: 20),
             articleImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
             articleImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
-            articleImage.heightAnchor.constraint(equalToConstant: articleImage.image != nil ? 300 : 0),
             
             // BodyUILabel constraints
             contentLabel.topAnchor.constraint(equalTo: articleImage.bottomAnchor, constant: 40),
@@ -157,18 +183,43 @@ public final class ArticleDetailsViewController: UIViewController {
         scrollView.refreshControl = refreshControl
     }
     
-    @objc private func handleRefresh() {
-        // TODO
-        DispatchQueue.main.async {
-            self.refreshControl.endRefreshing()
+    private func updateRefreshControl() {
+        viewModel.isLoading = { [weak self] isLoading in
+            DispatchQueue.main.async {
+                self?.refreshControl.update(isRefreshing: isLoading)
+            }
         }
     }
     
-    public func bind(_ viewModel: FeedArticleDetailsViewModel) {
+    @objc private func handleRefresh() {
+        delegate.didRequestImage()
+    }
+    
+    private func populateReceivedData() {
         titleLabel.text = viewModel.title
-        descriptionLabel.text = viewModel.title
+        descriptionLabel.text = viewModel.description
         authorLabel.text = viewModel.author
         publishedDateLabel.text = viewModel.publishedDate
         contentLabel.text = viewModel.content
+    }
+}
+
+extension ArticleDetailsViewController: ResourceView {
+    public func display(_ viewModel: UIImage) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            
+            self.articleImage.image = viewModel
+            
+           setImageHeightAndLayout()
+        }
+    }
+    
+    private func setImageHeightAndLayout() {
+        articleImage.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
     }
 }
