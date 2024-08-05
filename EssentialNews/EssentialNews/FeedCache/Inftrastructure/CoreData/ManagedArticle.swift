@@ -33,7 +33,7 @@ extension ManagedArticle {
             ),
             author: author,
             title: title,
-            description: description,
+            description: descriptionText,
             url: url,
             urlToImage: urlToImage,
             publishedAt: publishedAt,
@@ -75,6 +75,7 @@ extension ManagedArticle {
             managed.urlToImage = local.urlToImage
             managed.publishedAt = local.publishedAt
             managed.content = local.content
+            managed.data = nil
             
             guard let urlToImage = local.urlToImage else {
                 managed.data = nil
