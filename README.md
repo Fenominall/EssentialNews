@@ -1,4 +1,12 @@
 # EssentialNews App
+
+Welcome to the EssentialNews App! This iOS application provides users with mock news articles from various sources. It features a clean and intuitive interface, making it easy for users to stay updated on current events.
+
+# Features:
+- Latest News: Browse through the most recent news articles.
+- Article Details: Read full news articles with detailed information.
+- Refresh: Pull to refresh the news feed to get the latest updates.
+
 ![NewsAppDark](https://github.com/Fenominall/EssentialNews/blob/main/NewsAppDark.png)
 ![NewsAppLight](https://github.com/Fenominall/EssentialNews/blob/main/NewsAppLight.png)
 
