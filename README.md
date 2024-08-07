@@ -226,3 +226,4 @@ Given the customer doesn't have connectivity
 ---
 
 ### App Architecture
+![EssentialNewsAppArchitecture](https://github.com/Fenominall/EssentialNews/blob/main/EssentialNewsAppArchitecture.png)
