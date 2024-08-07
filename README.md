@@ -1,6 +1,6 @@
 # EssentialNews App
 ![NewsAppDark](https://github.com/Fenominall/EssentialNews/blob/main/NewsAppDark.png)
-
+![NewsAppLight](https://github.com/Fenominall/EssentialNews/blob/main/NewsAppLight.png)
 
 ### BDD Specs
 
