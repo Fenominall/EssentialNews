@@ -170,6 +170,10 @@ Given the customer doesn't have connectivity
 
 ---
 
+# Load Articles FlowChart
+![ArticlesLoadFlowChart](https://github.com/Fenominall/EssentialNews/blob/main/ArticlesLoadFlowChart.png)
+
+
 ### Validate Articles Feed Cache Use Case
 
 #### Primary course:
