@@ -10,6 +10,7 @@ Welcome to the EssentialNews App! This iOS application provides users with mock 
 ![NewsAppDark](https://github.com/Fenominall/EssentialNews/blob/main/NewsAppDark.png)
 ![NewsAppLight](https://github.com/Fenominall/EssentialNews/blob/main/NewsAppLight.png)
 
+#
 ### BDD Specs
 
 ## News Feed Feature Specs
