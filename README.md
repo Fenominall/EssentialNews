@@ -250,19 +250,18 @@ Given the customer doesn't have connectivity
 ### Load Article Details From Remote Use Case
 ### Data:
 
-```
-Need to finish
-Primary course (happy path):
-Execute "Load Image Comments" command with above data.
+### Primary course (happy path):
+Execute "Load Image Data" command with above data.
 System loads data from remote service.
 System validates data.
 System creates comments from valid data.
 System delivers comments.
-Invalid data – error course (sad path):
+
+### Invalid data – error course (sad path):
 System delivers invalid data error.
-No connectivity – error course (sad path):
+
+### No connectivity – error course (sad path):
 System delivers connectivity error.
-```
 
 
 # App Architecture
