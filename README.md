@@ -224,6 +224,46 @@ Given the customer doesn't have connectivity
 1. System delivers error.
 
 ---
+# Article Details Feature Specs
+### Story: Customer requests to see article details
+### Narrative
+
+```
+As an online customer
+I want the app to load article details
+So I can read the full details in an article from my feed
+```
+
+### Scenarios (Acceptance criteria)
+
+```
+Given the customer has connectivity
+ When the customer requests to see article details on an article
+ Then the app should display all details of that article
+
+Given the customer doesn't have connectivity
+ When the customer requests to see details on an article
+ Then the app should display an error message
+```
+
+## Use Cases
+### Load Article Details From Remote Use Case
+### Data:
+
+```
+Need to finish
+Primary course (happy path):
+Execute "Load Image Comments" command with above data.
+System loads data from remote service.
+System validates data.
+System creates comments from valid data.
+System delivers comments.
+Invalid data – error course (sad path):
+System delivers invalid data error.
+No connectivity – error course (sad path):
+System delivers connectivity error.
+```
+
 
 # App Architecture
 ![EssentialNewsAppArchitecture](https://github.com/Fenominall/EssentialNews/blob/main/EssentialNewsAppArchitecture.png)
